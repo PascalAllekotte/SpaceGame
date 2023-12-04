@@ -54,11 +54,11 @@ Diese Aktion kann jedoch **maximal einmal pro Kampf** ausgeführt werden!
 
 
 * Es ist rundenbasiert. D.h. die einzelnen Mitglieder deines Heldenteams führen nacheinander eine Aktion aus und danach führt der Endgegner eine Aktion aus. Dies läuft so lange, bis die HP <span style="text-decoration:underline;">aller</span> einzelnen Teammitglieder **oder** des Endgegner(-teams) auf 0 sinken.
-* Nachdem sowohl jeder Held als auch jeder Gegner jeweils eine Aktionen durchgeführt hat, endet die Runde und der Kampf geht in die nächste Runde. 
+* Nachdem sowohl jeder Held als auch jeder Enemy.Gegner jeweils eine Aktionen durchgeführt hat, endet die Runde und der Kampf geht in die nächste Runde. 
 * Die Aktionen des Gegners werden <span style="text-decoration:underline;">völlig zufällig</span> aus seinem Pool an möglichen Aktionen ausgewählt.
 * Die Aktionen der Helden werden mit einer Eingabe auf der Konsole ausgewählt. \
 Das bedeutet, du wirst in der Konsole jede Runde gefragt, welche Aktion du für jeden deiner Helden durchführen möchtest.
-* In der Konsole wird außerdem jede Runde geschrieben, welche Aktion der Gegner ausgeführt hat und ggf. wie viele HP die betroffenen Helden / Gegner noch übrig haben. Ziel ist hierbei vor allem, dass man als Nutzer des Programms erfährt, was gerade im Kampf passiert.
+* In der Konsole wird außerdem jede Runde geschrieben, welche Aktion der Enemy.Gegner ausgeführt hat und ggf. wie viele HP die betroffenen Helden / Enemy.Gegner noch übrig haben. Ziel ist hierbei vor allem, dass man als Nutzer des Programms erfährt, was gerade im Kampf passiert.
 
 
 ## 3. Optionale, freiwillige Ergänzungen und Anmerkungen
@@ -70,5 +70,5 @@ Einige Ideen zur Erweiterung:
 
 * Du kannst kritische Treffer implementieren.  \
 D.h. dass Angriffe mit einer Wahrscheinlichkeit von 5% doppelten Schaden verursachen.
-* Wenn du magst, kannst du auch sogenannte „Stats“ bei deinen Helden und Gegnern einfügen. Stats könnten z.B. ein Grundschadenswert, Schnelligkeit (= Reihenfolge, in der die Helden und Gegner ihre Aktionen durchführen), Rüstungswert und ähnliches sein. Der Verteidigungswert könnte z.B. einen Angriff auf den betroffenen Charakter um seinen Wert verringern.
-* Noch komplexer wird es, wenn du unterschiedliche Stärken und Schwächen einbinden möchtest. So könnten z.B. deine Helden und Gegner bestimmten Elementartypen angehören. Wasserzauber könnten zum Beispiel gegen Feuertypen grundsätzlich mehr Schaden verursachen – andersherum würde Feuer gegen Wasser nur einen verringerten Schaden verursachen.
+* Wenn du magst, kannst du auch sogenannte „Stats“ bei deinen Helden und Gegnern einfügen. Stats könnten z.B. ein Grundschadenswert, Schnelligkeit (= Reihenfolge, in der die Helden und Enemy.Gegner ihre Aktionen durchführen), Rüstungswert und ähnliches sein. Der Verteidigungswert könnte z.B. einen Angriff auf den betroffenen Charakter um seinen Wert verringern.
+* Noch komplexer wird es, wenn du unterschiedliche Stärken und Schwächen einbinden möchtest. So könnten z.B. deine Helden und Enemy.Gegner bestimmten Elementartypen angehören. Wasserzauber könnten zum Beispiel gegen Feuertypen grundsätzlich mehr Schaden verursachen – andersherum würde Feuer gegen Wasser nur einen verringerten Schaden verursachen.
