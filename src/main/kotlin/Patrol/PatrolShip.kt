@@ -9,4 +9,5 @@ class PatrolShip (name: String, health: Double, attack: Double, enemy: Boolean, 
     var armor = armor
 
 
+
 }
