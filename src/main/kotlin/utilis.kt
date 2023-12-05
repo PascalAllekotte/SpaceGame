@@ -117,8 +117,11 @@ fun nextStep (ship: MutableList<PatrolShip>){
                     nextStep(patrols)
                 }
                 3 -> {
-                    println("Attackmode deactivated.\nDefensive Mode activated")
-                    nextStep(patrols)
+                    Thread.sleep(600)
+                    println("Attackmode activated.")
+                    Thread.sleep(600)
+                    println("Defensive deactivated.")
+                    Thread.sleep(2000)
                 }
                 4 -> {
                     nextStep(patrols)
