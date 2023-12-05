@@ -88,8 +88,12 @@ fun nextStep (ship: MutableList<PatrolShip>){
                         nextStep(patrols)
                     }
                     else {
+                        Thread.sleep(600)
                         println("Defense mode is already activated.")
+                        Thread.sleep(600)
+
                     }
+                    Thread.sleep(600)
                     nextStep(patrols)
 
                 }
@@ -103,12 +107,17 @@ fun nextStep (ship: MutableList<PatrolShip>){
                         ship[menu1 - 1].defense = false
                         nextStep(patrols)
                     }else {
+                        Thread.sleep(600)
                         println("Attack mode is already activated.")
+                        Thread.sleep(600)
+
                     }
+                    Thread.sleep(600)
                     nextStep(patrols)
 
                 }
                 4 -> {
+                    Thread.sleep(600)
                     nextStep(patrols)
                 }
             }
@@ -138,8 +147,12 @@ fun nextStep (ship: MutableList<PatrolShip>){
                         nextStep(patrols)
                     }
                     else {
+                        Thread.sleep(600)
                         println("Defense mode is already activated.")
+                        Thread.sleep(600)
+
                     }
+                    Thread.sleep(600)
                     nextStep(patrols)
 
                 }
@@ -153,12 +166,17 @@ fun nextStep (ship: MutableList<PatrolShip>){
                         ship[menu1 - 1].defense = false
                         nextStep(patrols)
                     }else {
+                        Thread.sleep(600)
                         println("Attack mode is already activated.")
+                        Thread.sleep(600)
+
                     }
+                    Thread.sleep(600)
                     nextStep(patrols)
 
                 }
                 4 -> {
+                    Thread.sleep(600)
                     nextStep(patrols)
                 }
             }
@@ -188,8 +206,12 @@ fun nextStep (ship: MutableList<PatrolShip>){
                         nextStep(patrols)
                     }
                     else {
+                        Thread.sleep(600)
                         println("Defense mode is already activated.")
+                        Thread.sleep(600)
+
                     }
+                    Thread.sleep(600)
                     nextStep(patrols)
 
                 }
@@ -203,13 +225,18 @@ fun nextStep (ship: MutableList<PatrolShip>){
                         ship[menu1 - 1].defense = false
                         nextStep(patrols)
                     }else {
+                        Thread.sleep(600)
                         println("Attack mode is already activated.")
+                        Thread.sleep(600)
+
                     }
+                    Thread.sleep(600)
                     nextStep(patrols)
 
                 }
                 4 -> {
-
+                    Thread.sleep(600)
+                    nextStep(patrols)
                 }
             }
 
