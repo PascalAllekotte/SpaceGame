@@ -22,7 +22,14 @@ fun armorBubble(patrolHP: Double){
 fun shipStats(patrols: MutableList<PatrolShip>) {
     println("__________Stats of your ships:__________")
     for (ship in patrols) {
-        println("Ship: [${ship.name}], HP: [${ship.health}], Atack: [${ship.attack}], Armor: [${ship.armor}], Level: [${ship.level}]")
+        val nameColor = "\u001B[97m${ship.name}\u001B[0m"
+        val healthColor = "\u001B[31m${ship.health}\u001B[0m"
+        val attackColor = "\u001B[34m${ship.attack}\u001B[0m"
+        val armorColor = "\u001B[33m${ship.armor}\u001B[0m"
+        val levelColor = "\u001B[32m${ship.level}\u001B[0m"
+        val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
+
+        println("Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseColor]")
     }
 }
 
@@ -55,17 +62,24 @@ fun nextStep (ship: MutableList<PatrolShip>){
     println("                        ¯¯¯")
     when (menu1) {
         1 -> {
-            println("You did choose ship: \n " +
+            println("You choosed ship $menu1: \n " +
                     "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
+            var defenseMode = ship[menu1-1].defense
+            val defenseModeStatus = if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+            val attackModeStatus = if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+
+
+            print("Actions:\n  Use Item[1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode[3]    $attackModeStatus\nChoose: ")
+            var menu2 = readln().toInt() // Nur Zahlen
 
         }
         2 -> {
-            println("You did choose ship: \n " +
+            println("You choosed ship $menu1: \n " +
                     "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
 
         }
         3 -> {
-            println("You did choose ship: \n " +
+            println("You choosed ship $menu1: \n " +
                     "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
 
         }
@@ -82,4 +96,5 @@ fun nextStep (ship: MutableList<PatrolShip>){
     println("Attack [1]")
     println("Use Item [1]")
     println("Repair Ship [1]")
+
  */

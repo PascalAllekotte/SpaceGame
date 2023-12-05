@@ -5,9 +5,9 @@ val itemList = mutableListOf<Items>(
 
 )
 var patrols = mutableListOf(
-    PatrolShip("Galactic Reaper", 1000.0, 50.0, false, 1, 250.0),
-    PatrolShip("Nebular Shooter", 1000.0, 50.0, false, 1, 250.0),
-    PatrolShip("Cosmic Cargo", 1000.0, 50.0, false, 1, 250.0)
+    PatrolShip("Galactic Reaper", 1000.0, 50.0, false, false, 1, 250.0),
+    PatrolShip("Nebular Shooter", 1000.0, 50.0, true, false, 1, 250.0),
+    PatrolShip("Cosmic Cargo", 1000.0, 50.0, true, false, 1, 250.0)
 )
 
 
@@ -42,3 +42,6 @@ var patrols = mutableListOf(
         println("Game Over")
     }
 
+// rot    println("\u001B[31mThis text is red.\u001B[0m")
+// blau   println("\u001B[34mThis text is blue.\u001B[0m")
+// grün   println("\u001B[32mThis text is green.\u001B[0m")
