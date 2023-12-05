@@ -32,12 +32,13 @@ fun bag(liste: MutableList<Items>) {
     println("__________Items in your storage:__________")
 
     if (liste.isEmpty()) {
-        println("No item in storage.")
+        println("|           No item in storage.          |")
     } else {
         for (item in liste) {
             println("Item: [${item}], Power: [${item}]")
         }
     }
+    println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 }
 
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
@@ -48,9 +49,24 @@ fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
     println("\n  After attack")
 }
 
-fun nextStep (){
-    println("Plan your next Step:")
-    println("Choose ship [1] [2] [3]: ")
+fun nextStep (ship: MutableList<PatrolShip>){
+    print("---Plan your next Step---\nChoose ship [1] [2] [3]: ")
+    var menu1 = readln().toInt() // Nur Zahlen
+    println("                        ¯¯¯")
+    when (menu1) {
+        1 -> {
+            println(ship)
+        }
+        2 -> {
+            println(ship)
+        }
+        3 -> {
+            println(ship)
+        }
+
+    }
+
+
 
 
 
