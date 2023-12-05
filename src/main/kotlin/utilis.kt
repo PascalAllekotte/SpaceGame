@@ -55,13 +55,19 @@ fun nextStep (ship: MutableList<PatrolShip>){
     println("                        ¯¯¯")
     when (menu1) {
         1 -> {
-            println(ship)
+            println("You did choose ship: \n " +
+                    "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
+
         }
         2 -> {
-            println(ship)
+            println("You did choose ship: \n " +
+                    "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
+
         }
         3 -> {
-            println(ship)
+            println("You did choose ship: \n " +
+                    "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
+
         }
 
     }
