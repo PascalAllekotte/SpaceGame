@@ -6,8 +6,8 @@ val itemList = mutableListOf<Items>(
 )
 var patrols = mutableListOf(
     PatrolShip("Galactic Reaper", 1000.0, 50.0, false, false, 1, 250.0),
-    PatrolShip("Nebular Shooter", 1000.0, 50.0, true, false, 1, 250.0),
-    PatrolShip("Cosmic Cargo", 1000.0, 50.0, true, false, 1, 250.0)
+    PatrolShip("Nebular Shooter", 1000.0, 50.0, true,  false, 1, 250.0),
+    PatrolShip("Cosmic Cargo",    1000.0, 50.0, true,  false, 1, 250.0)
 )
 
 
@@ -40,7 +40,7 @@ var patrols = mutableListOf(
             if (healthpoints <= 0) {
                 alive = false
             }
-            readln().toDouble()
+           readln().toString()
 
             println("\n")
         }
