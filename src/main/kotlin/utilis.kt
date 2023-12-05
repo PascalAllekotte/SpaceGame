@@ -41,9 +41,23 @@ fun bag(liste: MutableList<Items>) {
 }
 
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
-    println("Darth Rader attack Galactic Patrol.. Damage: [$damage]")
+    println("\n Darth Rader attack Galactic Patrol.. Damage: [$damage]")
     for (ship in patrolShip){
         ship.health -= damage
     }
     println("\n  After attack")
 }
+
+fun nextStep (){
+    println("Plan your next Step:")
+    println("Choose ship [1] [2] [3]: ")
+
+
+
+}
+
+/*
+    println("Attack [1]")
+    println("Use Item [1]")
+    println("Repair Ship [1]")
+ */

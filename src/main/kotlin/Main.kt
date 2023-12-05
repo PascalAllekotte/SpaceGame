@@ -24,12 +24,10 @@ var patrols = mutableListOf(
         while (alive) {
 
 
-
-
-            shipStats(patrols)
-            println(patrolHealth)
-
-            bag(itemList)
+            shipStats(patrols) // Stats of your ships
+            println(patrolHealth) // total Health
+            bag(itemList) // Items in storage
+            nextStep()
 
             attackAllShips(patrols, 500.0)
             shipStats(patrols)
