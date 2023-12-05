@@ -95,14 +95,66 @@ fun nextStep (ship: MutableList<PatrolShip>){
 
         }
         2 -> {
-            println("You choosed ship $menu1: \n " +
+            println("Your choosed ship $menu1: \n " +
                     "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
+            var defenseMode = ship[menu1-1].defense
+            val defenseModeStatus = if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+            val attackModeStatus = if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
 
+
+            print("Actions:\n  Use Item[1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode[3]    $attackModeStatus\n  Back[4]\nChoose: ")
+            var menu2 = readln().toInt() // Nur Zahlen
+            when (menu2){
+                1 -> {
+                }
+                2 -> {
+                    Thread.sleep(600)
+                    println("Defensive Mode activated.")
+                    Thread.sleep(600)
+                    println("Attackmode deactivated.")
+                    Thread.sleep(2000)
+
+                    nextStep(patrols)
+                }
+                3 -> {
+                    println("Attackmode deactivated.\nDefensive Mode activated")
+                    nextStep(patrols)
+                }
+                4 -> {
+                    nextStep(patrols)
+                }
+            }
         }
         3 -> {
-            println("You choosed ship $menu1: \n " +
+            println("Your choosed ship $menu1: \n " +
                     "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
+            var defenseMode = ship[menu1-1].defense
+            val defenseModeStatus = if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+            val attackModeStatus = if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
 
+
+            print("Actions:\n  Use Item[1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode[3]    $attackModeStatus\n  Back[4]\nChoose: ")
+            var menu2 = readln().toInt() // Nur Zahlen
+            when (menu2){
+                1 -> {
+                }
+                2 -> {
+                    Thread.sleep(600)
+                    println("Defensive Mode activated.")
+                    Thread.sleep(600)
+                    println("Attackmode deactivated.")
+                    Thread.sleep(2000)
+
+                    nextStep(patrols)
+                }
+                3 -> {
+                    println("Attackmode deactivated.\nDefensive Mode activated")
+                    nextStep(patrols)
+                }
+                4 -> {
+                    nextStep(patrols)
+                }
+            }
         }
         4 -> {"\n"}
 

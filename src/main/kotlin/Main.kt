@@ -29,6 +29,10 @@ var patrols = mutableListOf(
             bag(itemList) // Items in storage
             nextStep(patrols)
             move2()
+
+
+
+
 //AB hier macht der Gegner seinen move
             attackAllShips(patrols, 500.0)
             shipStats(patrols)
