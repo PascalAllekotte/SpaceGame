@@ -29,7 +29,7 @@ fun shipStats(patrols: MutableList<PatrolShip>) {
         val armorColor = "\u001B[33m${ship.armor}\u001B[0m"
         val levelColor = "\u001B[32m${ship.level}\u001B[0m"
         // val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
-        val defenseModeStatus = if (ship.defense) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+        val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
 
 
         println("Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus]")
