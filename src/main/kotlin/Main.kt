@@ -28,6 +28,7 @@ var patrols = mutableListOf(
             println(patrolHealth) // total Health
             bag(itemList) // Items in storage
             nextStep(patrols)
+            move2()
 //AB hier macht der Gegner seinen move
             attackAllShips(patrols, 500.0)
             shipStats(patrols)
@@ -41,6 +42,8 @@ var patrols = mutableListOf(
         }
         println("Game Over")
     }
+
+
 
 // rot    println("\u001B[31mThis text is red.\u001B[0m")
 // blau   println("\u001B[34mThis text is blue.\u001B[0m")

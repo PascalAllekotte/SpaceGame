@@ -1,4 +1,5 @@
 import Patrol.PatrolShip
+import kotlinx.coroutines.delay
 
 fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
@@ -57,9 +58,9 @@ fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
 }
 
 fun nextStep (ship: MutableList<PatrolShip>){
-    print("---Plan your next Step---\nChoose ship [1] [2] [3]: ")
+    print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue [4]: ")
     var menu1 = readln().toInt() // Nur Zahlen
-    println("                        ¯¯¯")
+    println("                                                 ¯¯¯")
     when (menu1) {
         1 -> {
             println("You choosed ship $menu1: \n " +
@@ -83,14 +84,23 @@ fun nextStep (ship: MutableList<PatrolShip>){
                     "Ship: [${ship[menu1-1].name}], HP: [${ship[menu1-1].health}], Atack: [${ship[menu1-1].attack}], Armor: [${ship[menu1-1].armor}], Level: [${ship[menu1-1].level}]")
 
         }
+        4 -> {"\n"}
 
     }
+}
 
-
+fun move2(){
+    Thread.sleep(1000)
+    println("Attacking Enemy...")
+    Thread.sleep(1000)
+    println("Attacking Enemy......")
+    Thread.sleep(1000)
+    println("Attacking Enemy.........")
 
 
 
 }
+
 
 /*
     println("Attack [1]")
