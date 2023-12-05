@@ -17,6 +17,7 @@ var patrols = mutableListOf(
         var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health)
         var alive = true
 
+        // Später noch Blinken lassen Spielstart Effekt einbauen
         println("                                Galactic Patrol")
         println("______________________________________________________________________________________")
 
