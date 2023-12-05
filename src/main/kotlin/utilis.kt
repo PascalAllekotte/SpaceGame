@@ -54,7 +54,11 @@ fun bag(liste: MutableList<Items>) {
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
     println("\n Darth Rader attack Galactic Patrol.. Damage: [$damage]")
     for (ship in patrolShip){
-        ship.health -= damage
+        var defenseDamge = if (ship.defense){
+            ship.health -= damage - damage * 0.86
+        } else {
+            ship.health -= damage
+        }
     }
     println("\n  After attack")
 }
@@ -172,7 +176,6 @@ fun nextStep (ship: MutableList<PatrolShip>){
 
                     }
                     Thread.sleep(600)
-                    nextStep(patrols)
 
                 }
                 4 -> {
@@ -231,7 +234,7 @@ fun nextStep (ship: MutableList<PatrolShip>){
 
                     }
                     Thread.sleep(600)
-                    nextStep(patrols)
+
 
                 }
                 4 -> {
@@ -263,5 +266,11 @@ fun move2(){
     println("Attack [1]")
     println("Use Item [1]")
     println("Repair Ship [1]")
+
+    Defensemodus Atacke rezuzieren
+      var defenseDamge = if (ship.defense){
+            ship.health -= damage - damage * 0.86
+
+
 
  */
