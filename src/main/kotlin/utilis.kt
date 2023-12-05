@@ -28,9 +28,11 @@ fun shipStats(patrols: MutableList<PatrolShip>) {
         val attackColor = "\u001B[34m${ship.attack}\u001B[0m"
         val armorColor = "\u001B[33m${ship.armor}\u001B[0m"
         val levelColor = "\u001B[32m${ship.level}\u001B[0m"
-        val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
+        // val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
+        val defenseModeStatus = if (ship.defense) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
 
-        println("Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseColor]")
+
+        println("Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus]")
     }
 }
 
@@ -126,22 +128,35 @@ fun nextStep (ship: MutableList<PatrolShip>){
                 1 -> {
                 }
                 2 -> {
-                    Thread.sleep(600)
-                    println("Defensive Mode activated.")
-                    Thread.sleep(600)
-                    println("Attackmode deactivated.")
-                    Thread.sleep(2000)
-                    ship[menu1-1].defense = true
+                    if (!defenseMode) {
+                        Thread.sleep(600)
+                        println("Defensive Mode activated.")
+                        Thread.sleep(600)
+                        println("Attackmode deactivated.")
+                        Thread.sleep(2000)
+                        ship[menu1 - 1].defense = true
+                        nextStep(patrols)
+                    }
+                    else {
+                        println("Defense mode is already activated.")
+                    }
                     nextStep(patrols)
+
                 }
                 3 -> {
-                    Thread.sleep(600)
-                    println("Attackmode activated.")
-                    Thread.sleep(600)
-                    println("Defensive deactivated.")
-                    Thread.sleep(2000)
-                    ship[menu1-1].defense = false
+                    if (defenseMode) {
+                        Thread.sleep(600)
+                        println("Attackmode activated.")
+                        Thread.sleep(600)
+                        println("Defensive deactivated.")
+                        Thread.sleep(2000)
+                        ship[menu1 - 1].defense = false
+                        nextStep(patrols)
+                    }else {
+                        println("Attack mode is already activated.")
+                    }
                     nextStep(patrols)
+
                 }
                 4 -> {
                     nextStep(patrols)
@@ -163,25 +178,38 @@ fun nextStep (ship: MutableList<PatrolShip>){
                 1 -> {
                 }
                 2 -> {
-                    Thread.sleep(600)
-                    println("Defensive Mode activated.")
-                    Thread.sleep(600)
-                    println("Attackmode deactivated.")
-                    Thread.sleep(2000)
-                    ship[menu1-1].defense = true
+                    if (!defenseMode) {
+                        Thread.sleep(600)
+                        println("Defensive Mode activated.")
+                        Thread.sleep(600)
+                        println("Attackmode deactivated.")
+                        Thread.sleep(2000)
+                        ship[menu1 - 1].defense = true
+                        nextStep(patrols)
+                    }
+                    else {
+                        println("Defense mode is already activated.")
+                    }
                     nextStep(patrols)
+
                 }
                 3 -> {
-                    Thread.sleep(600)
-                    println("Attackmode activated.")
-                    Thread.sleep(600)
-                    println("Defensive deactivated.")
-                    Thread.sleep(2000)
-                    ship[menu1-1].defense = false
+                    if (defenseMode) {
+                        Thread.sleep(600)
+                        println("Attackmode activated.")
+                        Thread.sleep(600)
+                        println("Defensive deactivated.")
+                        Thread.sleep(2000)
+                        ship[menu1 - 1].defense = false
+                        nextStep(patrols)
+                    }else {
+                        println("Attack mode is already activated.")
+                    }
                     nextStep(patrols)
+
                 }
                 4 -> {
-                    nextStep(patrols)
+
                 }
             }
 
