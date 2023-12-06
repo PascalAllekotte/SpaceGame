@@ -10,9 +10,9 @@ class Enemy (name: String, health: Double, attack: Double, defense: Boolean, ene
         val ziel = patrols[zufallsGenerator]
 
         val level = patrols[zufallsGenerator].level
-        val damage = level * 50.0
+        val damage = level * 80.0
         var defenseDamge = if (patrols[zufallsGenerator].defense) {
-            patrols[zufallsGenerator].health -= damage - damage * 0.86
+            patrols[zufallsGenerator].health -= damage - damage * 0.82
         } else {
             patrols[zufallsGenerator].health -= damage
         }
@@ -24,6 +24,23 @@ class Enemy (name: String, health: Double, attack: Double, defense: Boolean, ene
 
     }
 
+    fun attack2 (patrol: MutableList<PatrolShip>) {
+        val level = patrols[0].level  // Annahme: Alle Schiffe haben das gleiche Level
+        val damage = level * 80.0
+
+        for (ship in patrols) {
+            val actualDamage = if (ship.defense) {
+                (damage - damage * 0.82).coerceAtLeast(0.0)
+            } else {
+                damage
+            }
+
+            ship.health -= actualDamage
+        }
+
+        println("Das feindliche Schiff greift alle Galactic Patrol-Schiffe mit einem Schaden von $damage an.")
+    }
 
 
 }
+// println(" Enemy ship attacking all Galactic Patrol ships with a damage of $damage ")

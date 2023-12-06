@@ -61,7 +61,7 @@ fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
             ship.health -= damage
         }
     }
-    println("\n  After attack")
+    //println("\n  After attack")
 }
 
 fun gameRound (ship: MutableList<PatrolShip>){
@@ -79,10 +79,11 @@ fun menu1(ship: MutableList<PatrolShip>) {
     1, 2, 3 ->   {
         val name = "\u001B[97m${ship[shipNumber - 1].name}\u001B[0m"
         val health = "\u001B[31m${ship[shipNumber - 1].health}\u001B[0m"
-        val attack = "\u001B[34m${ship[shipNumber - 1].attack}u001B[0m"
+        val attack = "\u001B[34m${ship[shipNumber - 1].attack}\u001B[0m"
         val armor = "\u001B[33m${ship[shipNumber - 1].armor}\u001B[0m"
         val level= "\u001B[32m${ship[shipNumber - 1].level}\u001B[0m"
-           println(
+
+        println(
 
                "Your choosed ship $shipNumber: \n " +
                        "Ship: [$name], HP: [$health], Atack: [$attack], Armor: [$armor], Level: [$level]"
@@ -108,7 +109,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
                        println("Attackmode deactivated.")
                        Thread.sleep(2000)
                        ship[shipNumber - 1].defense = true
-                       gameRound(patrols)
+
                    } else {
                        Thread.sleep(600)
                        println("Defense mode is already activated.")
@@ -116,7 +117,6 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
                    }
                    Thread.sleep(600)
-                   gameRound(patrols)
 
                }
 
@@ -128,7 +128,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
                        println("Defensive deactivated.")
                        Thread.sleep(2000)
                        ship[shipNumber - 1].defense = false
-                       gameRound(patrols)
+
                    } else {
                        Thread.sleep(600)
                        println("Attack mode is already activated.")
@@ -136,22 +136,24 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
                    }
                    Thread.sleep(600)
-                   gameRound(patrols)
 
                }
 
                4 -> {
                    Thread.sleep(600)
-                   gameRound(patrols)
+
                }
 
 
            }
-
+        if (menu2 != 4) {
+            gameRound(ship)
+        }
 
        }
 
        4 ->   {
+
            move2()
        }
     }
@@ -167,8 +169,6 @@ fun move2(){
     println("Attacking Enemy......")
     Thread.sleep(1000)
     println("Attacking Enemy.........")
-
-
 }
 
 fun gegnerAngriff1() {
@@ -176,6 +176,14 @@ fun gegnerAngriff1() {
         enemy.normalAttack(patrols)
     }
 }
+
+fun attack2() {
+    for (enemy in enemys) {
+        enemy.attack2(patrols)
+    }
+}
+
+
 
 /*
     println("Attack [1]")

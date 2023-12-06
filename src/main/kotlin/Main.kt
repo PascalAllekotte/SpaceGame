@@ -7,9 +7,9 @@ val itemList = mutableListOf<Items>(
 var round = 1
 var coins = null ?: "No Coins"
 var patrols = mutableListOf(
-    PatrolShip("Galactic Reaper", 1000.0, 55.0, true, false, 1, 0.0),
-    PatrolShip("Nebular Shooter", 920.0, 70.0, true,  false, 1, 0.0),
-    PatrolShip("Cosmic Cargo",    1250.0, 40.0, true,  false, 1, 00.0)
+    PatrolShip("Galactic Reaper", 1000.0, 55.0, false, false, 1, 0.0),
+    PatrolShip("Nebular Shooter", 920.0, 70.0, false,  false, 1, 0.0),
+    PatrolShip("Cosmic Cargo",    1250.0, 40.0, false,  false, 1, 00.0)
 )
 
 val enemys =  mutableListOf(
@@ -34,12 +34,15 @@ val enemys =  mutableListOf(
             println(patrolHealth) // total Health
             bag(itemList) // Items in storage
             gameRound(patrols)
-            gegnerAngriff1()
+            attackAllShips(patrols, 200.0)
+            attack2()
+
+            // gegnerAngriff1()
 
 
 
 //AB hier macht der Gegner seinen move
-            // attackAllShips(patrols, 500.0)
+            attackAllShips(patrols, 500.0)
             shipStats(patrols, round)
             var healthpoints = totalHP(patrols[0].health, patrols[1].health, patrols[2].health)
             if (healthpoints <= 0) {
