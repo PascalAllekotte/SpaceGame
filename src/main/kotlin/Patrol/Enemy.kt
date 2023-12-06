@@ -41,6 +41,13 @@ class Enemy (name: String, health: Double, attack: Double, defense: Boolean, ene
         println("Das feindliche Schiff greift alle Galactic Patrol-Schiffe mit einem Schaden von $damage an.")
     }
 
+    val name = name
+    var health = health
+    var attack = attack
+    var level = level
+    var armor = armor
+    var defense = defense
+
 
 }
 // println(" Enemy ship attacking all Galactic Patrol ships with a damage of $damage ")

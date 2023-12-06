@@ -34,6 +34,7 @@ val enemys =  mutableListOf(
             println(patrolHealth) // total Health
             bag(itemList) // Items in storage
             gameRound(patrols)
+
             attackAllShips(patrols, 200.0)
             attack2()
 

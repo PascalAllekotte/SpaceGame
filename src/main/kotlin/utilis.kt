@@ -1,3 +1,4 @@
+import Patrol.Enemy
 import Patrol.PatrolShip
 
 fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Any): String{
@@ -37,6 +38,24 @@ fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
     }
 }
 
+//____________________________Gegner________________________________________
+fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
+    println("|__________Stats of the Enemy Ships:____________________________________________________")
+    for (ship in enemys) {
+        val nameColor = "\u001B[97m${ship.name}\u001B[0m"
+        val healthColor = "\u001B[31m${ship.health}\u001B[0m"
+        val attackColor = "\u001B[34m${ship.attack}\u001B[0m"
+        val armorColor = "\u001B[33m${ship.armor}\u001B[0m"
+        val levelColor = "\u001B[32m${ship.level}\u001B[0m"
+        // val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
+        val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
+
+
+        println("|Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus] |")
+    }
+    println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
+
+}
 
 
 fun bag(liste: MutableList<Items>) {
@@ -154,7 +173,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
        4 ->   {
 
-           move2()
+           enemyStats(enemys, round)
        }
     }
 
