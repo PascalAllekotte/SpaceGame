@@ -52,7 +52,7 @@ val enemys =  mutableListOf(
                 alive = false
             }
            readln().toString()
-            println("---------------Next round!-------------")
+            println("----------------Next round!--------------")
             round++
             println("\n")
         }
