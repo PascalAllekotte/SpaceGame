@@ -208,7 +208,7 @@ fun afterEnemyStats (){
     var actionInput = readln().toInt()
     when (actionInput){
         1 -> {
-
+        itemsMenu(liste =)
         }
         2 -> {
             gameRound(patrols)
@@ -216,6 +216,16 @@ fun afterEnemyStats (){
     }
 
 }
+//______________Items im Gameround Menü_____________________________________
+
+    fun itemsMenu (liste: MutableList<Items>){
+        if (liste.isNotEmpty()){
+            println("$liste")
+        } else {
+            println("No Items in Storage")
+        }
+
+    }
 
 
 /*
