@@ -13,8 +13,8 @@ var patrols = mutableListOf(
 )
 
 val enemys =  mutableListOf(
-    Enemy("Killer", 1000.0, 55.0, false, false, 1, 0.0),
-    Enemy("Blackbeard", 1000.0, 55.0, false, false, 1, 0.0)
+    Enemy("AlienShip", 200.0, 55.0, false, false, 2, 0.0),
+    Enemy("AlienShip2", 200.0, 55.0, false, false, 2, 0.0)
 
 )
 
@@ -30,20 +30,22 @@ val enemys =  mutableListOf(
             var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health, coins)
 
 
-            shipStats(patrols, round) // Stats of your ships
-            println(patrolHealth) // total Health
-            bag(itemList) // Items in storage
-            gameRound(patrols)
+            shipStats(patrols, round) // Stats der Schiffe
+            println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
+            bag(itemList) // Items im storage anzeigen
+            gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
+            afterEnemyStats() // Gegner Stats anzeigen
+            attackAllShips(patrols, 100.0) // Gegner attackiert alle Schiffe
 
-            attackAllShips(patrols, 200.0)
-            attack2()
+
+            //attack2()
 
             // gegnerAngriff1()
 
 
 
 //AB hier macht der Gegner seinen move
-            attackAllShips(patrols, 500.0)
+           // attackAllShips(patrols, 500.0)
             shipStats(patrols, round)
             var healthpoints = totalHP(patrols[0].health, patrols[1].health, patrols[2].health)
             if (healthpoints <= 0) {

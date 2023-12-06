@@ -54,7 +54,7 @@ fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
         println("|Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus] |")
     }
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
-
+    afterEnemyStats()
 }
 
 
@@ -160,7 +160,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
                4 -> {
                    Thread.sleep(600)
-
+                gameRound(patrols)
                }
 
 
@@ -202,6 +202,20 @@ fun attack2() {
     }
 }
 
+fun afterEnemyStats (){
+    println("Decide now\n  Attack        [1]\n  Back to Ships[2]")
+    print("Choose:")
+    var actionInput = readln().toInt()
+    when (actionInput){
+        1 -> {
+
+        }
+        2 -> {
+            gameRound(patrols)
+        }
+    }
+
+}
 
 
 /*
