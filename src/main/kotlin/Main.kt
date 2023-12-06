@@ -3,7 +3,7 @@ import Patrol.PatrolShip
 val itemList = mutableListOf<Items>(
 
 )
-
+var round = 1
 var coins = null ?: "No Coins"
 var patrols = mutableListOf(
     PatrolShip("Galactic Reaper", 1000.0, 55.0, true, false, 1, 0.0),
@@ -26,7 +26,7 @@ var patrols = mutableListOf(
         while (alive) {
 
 
-            shipStats(patrols) // Stats of your ships
+            shipStats(patrols, round) // Stats of your ships
             println(patrolHealth) // total Health
             bag(itemList) // Items in storage
             nextStep(patrols)
@@ -37,13 +37,14 @@ var patrols = mutableListOf(
 
 //AB hier macht der Gegner seinen move
             attackAllShips(patrols, 500.0)
-            shipStats(patrols)
+            shipStats(patrols, round)
             var healthpoints = totalHP(patrols[0].health, patrols[1].health, patrols[2].health)
             if (healthpoints <= 0) {
                 alive = false
             }
            readln().toString()
-
+            println("---------------Next round!-------------")
+            round++
             println("\n")
         }
         println("Game Over")

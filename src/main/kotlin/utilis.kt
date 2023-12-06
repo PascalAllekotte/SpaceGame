@@ -21,8 +21,8 @@ fun armorBubble(patrolHP: Double){
     }
 }
 
-fun shipStats(patrols: MutableList<PatrolShip>) {
-    println("__________Stats of your ships:__________")
+fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
+    println("__________Stats of your ships:__________    Round: $round    __________")
     for (ship in patrols) {
         val nameColor = "\u001B[97m${ship.name}\u001B[0m"
         val healthColor = "\u001B[31m${ship.health}\u001B[0m"
