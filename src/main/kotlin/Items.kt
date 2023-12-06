@@ -1,4 +1,4 @@
-open class Items(liste : MutableList<Items>) {
+open class Items(coins: Int, liste : MutableList<Items>) {
 
     val items = mutableListOf(null)
 

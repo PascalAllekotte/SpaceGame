@@ -1,20 +1,21 @@
 import Patrol.PatrolShip
-import kotlinx.coroutines.*
 
 val itemList = mutableListOf<Items>(
 
 )
+
+var coins = null ?: "No Coins"
 var patrols = mutableListOf(
-    PatrolShip("Galactic Reaper", 1000.0, 50.0, false, false, 1, 250.0),
-    PatrolShip("Nebular Shooter", 1000.0, 50.0, true,  false, 1, 250.0),
-    PatrolShip("Cosmic Cargo",    1000.0, 50.0, true,  false, 1, 250.0)
+    PatrolShip("Galactic Reaper", 1000.0, 55.0, true, false, 1, 0.0),
+    PatrolShip("Nebular Shooter", 920.0, 70.0, true,  false, 1, 0.0),
+    PatrolShip("Cosmic Cargo",    1250.0, 40.0, true,  false, 1, 00.0)
 )
 
 
 
 
     fun main() {
-        var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health)
+        var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health, coins)
         var alive = true
 
         // Später noch Blinken lassen Spielstart Effekt einbauen

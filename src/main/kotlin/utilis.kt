@@ -1,9 +1,10 @@
 import Patrol.PatrolShip
-import kotlinx.coroutines.delay
 
-fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double): String{
+fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Any): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
-    return "Galactic Patrol has a total HP of: $patrolHP"
+    val healthColor = "\u001B[31m$patrolHP\u001B[0m"
+    val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
+    return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
 
 }
 fun totalHP(shipHP: Double, shipHP2: Double, shipHP3: Double): Double {
