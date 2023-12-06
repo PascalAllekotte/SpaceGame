@@ -15,7 +15,6 @@ var patrols = mutableListOf(
 
 
     fun main() {
-        var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health, coins)
         var alive = true
 
         // Später noch Blinken lassen Spielstart Effekt einbauen
@@ -24,6 +23,7 @@ var patrols = mutableListOf(
 
 
         while (alive) {
+            var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health, coins)
 
 
             shipStats(patrols, round) // Stats of your ships

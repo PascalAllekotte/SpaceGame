@@ -2,8 +2,8 @@ import Patrol.PatrolShip
 
 fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Any): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
-    val healthColor = "\u001B[31m$patrolHP\u001B[0m"
-    val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
+    var healthColor = "\u001B[31m$patrolHP\u001B[0m"
+    var coinColor = "\u001B[38;5;208m$coins\u001B[0m"
     return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
 
 }
@@ -123,7 +123,6 @@ fun nextStep (ship: MutableList<PatrolShip>){
                 }
                 4 -> {
                     Thread.sleep(600)
-                    nextStep(patrols)
                 }
             }
 
@@ -181,7 +180,6 @@ fun nextStep (ship: MutableList<PatrolShip>){
                 }
                 4 -> {
                     Thread.sleep(600)
-                    nextStep(patrols)
                 }
             }
 
@@ -240,7 +238,6 @@ fun nextStep (ship: MutableList<PatrolShip>){
                 }
                 4 -> {
                     Thread.sleep(600)
-                    nextStep(patrols)
                 }
             }
 
