@@ -64,79 +64,90 @@ fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
     println("\n  After attack")
 }
 
-fun hauptmenü (ship: MutableList<PatrolShip>){
-    print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue [4]: ")
-    var menu1 = readln().toInt() // Nur Zahlen
+fun gameRound (ship: MutableList<PatrolShip>){
+
+    //var menu1 = readln().toInt() // Nur Zahlen
     println("                                                 ¯¯¯")
     menu1(ship)
 }
 
-private fun menu1(ship: MutableList<PatrolShip>) {
-
-    var menu1 = 1
-    println(
-        "Your choosed ship $menu1: \n " +
-                "Ship: [${ship[menu1 - 1].name}], HP: [${ship[menu1 - 1].health}], Atack: [${ship[menu1 - 1].attack}], Armor: [${ship[menu1 - 1].armor}], Level: [${ship[menu1 - 1].level}]"
-    )
-    var defenseMode = ship[menu1 - 1].defense
-    val defenseModeStatus =
-        if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
-    val attackModeStatus =
-        if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
-
-
-    print("Actions:\n  Use Items    [1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode   [3]    $attackModeStatus\n  Back[4]\nChoose: ")
-    var menu2 = readln().toInt() // Nur Zahlen
-    when (menu2) {
-        1 -> {
-        }
-
-        2 -> {
-            if (!defenseMode) {
-                Thread.sleep(600)
-                println("Defensive Mode activated.")
-                Thread.sleep(600)
-                println("Attackmode deactivated.")
-                Thread.sleep(2000)
-                ship[menu1 - 1].defense = true
-                hauptmenü(patrols)
-            } else {
-                Thread.sleep(600)
-                println("Defense mode is already activated.")
-                Thread.sleep(600)
-
-            }
-            Thread.sleep(600)
-            hauptmenü(patrols)
-
-        }
-
-        3 -> {
-            if (defenseMode) {
-                Thread.sleep(600)
-                println("Attackmode activated.")
-                Thread.sleep(600)
-                println("Defensive deactivated.")
-                Thread.sleep(2000)
-                ship[menu1 - 1].defense = false
-                hauptmenü(patrols)
-            } else {
-                Thread.sleep(600)
-                println("Attack mode is already activated.")
-                Thread.sleep(600)
-
-            }
-            Thread.sleep(600)
-            hauptmenü(patrols)
-
-        }
-
-        4 -> {
-            Thread.sleep(600)
-            move2()
-        }
+fun menu1(ship: MutableList<PatrolShip>) {
+    print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue [4]: ")
+    var shipNumber = readln().toInt()
+   when (shipNumber) {
+    1, 2, 3 ->   {
+           println(
+               "Your choosed ship $shipNumber: \n " +
+                       "Ship: [${ship[shipNumber - 1].name}], HP: [${ship[shipNumber - 1].health}], Atack: [${ship[shipNumber - 1].attack}], Armor: [${ship[shipNumber - 1].armor}], Level: [${ship[shipNumber - 1].level}]"
+           )
+           var defenseMode = ship[shipNumber - 1].defense
+           val defenseModeStatus =
+               if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+           val attackModeStatus =
+               if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
 
 
+           print("Actions:\n  Use Items    [1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode   [3]    $attackModeStatus\n  Back[4]\nChoose: ")
+           var menu2 = readln().toInt() // Nur Zahlen
+           when (menu2) {
+               1 -> {
+               }
+
+               2 -> {
+                   if (!defenseMode) {
+                       Thread.sleep(600)
+                       println("Defensive Mode activated.")
+                       Thread.sleep(600)
+                       println("Attackmode deactivated.")
+                       Thread.sleep(2000)
+                       ship[shipNumber - 1].defense = true
+                       gameRound(patrols)
+                   } else {
+                       Thread.sleep(600)
+                       println("Defense mode is already activated.")
+                       Thread.sleep(600)
+
+                   }
+                   Thread.sleep(600)
+                   gameRound(patrols)
+
+               }
+
+               3 -> {
+                   if (defenseMode) {
+                       Thread.sleep(600)
+                       println("Attackmode activated.")
+                       Thread.sleep(600)
+                       println("Defensive deactivated.")
+                       Thread.sleep(2000)
+                       ship[shipNumber - 1].defense = false
+                       gameRound(patrols)
+                   } else {
+                       Thread.sleep(600)
+                       println("Attack mode is already activated.")
+                       Thread.sleep(600)
+
+                   }
+                   Thread.sleep(600)
+                   gameRound(patrols)
+
+               }
+
+               4 -> {
+                   println("Test innere 4")
+                   Thread.sleep(600)
+                   menu1(ship)
+               }
+
+
+           }
+
+
+       }
+
+       4 ->   {
+           move2()
+       }
     }
 
 }

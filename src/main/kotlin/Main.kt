@@ -29,8 +29,8 @@ var patrols = mutableListOf(
             shipStats(patrols, round) // Stats of your ships
             println(patrolHealth) // total Health
             bag(itemList) // Items in storage
-            hauptmenü(patrols)
-            move2()
+            gameRound(patrols)
+
 
 
 
