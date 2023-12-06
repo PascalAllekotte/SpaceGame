@@ -1,6 +1,0 @@
-package Enemy
-
-class enemy {
-
-
-}

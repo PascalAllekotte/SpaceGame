@@ -67,18 +67,25 @@ fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
 fun gameRound (ship: MutableList<PatrolShip>){
 
     //var menu1 = readln().toInt() // Nur Zahlen
-    println("                                                 ¯¯¯")
     menu1(ship)
 }
 
 fun menu1(ship: MutableList<PatrolShip>) {
     print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue [4]: ")
     var shipNumber = readln().toInt()
+    println("                                                 ¯¯¯")
+
    when (shipNumber) {
     1, 2, 3 ->   {
+        val name = "\u001B[97m${ship[shipNumber - 1].name}\u001B[0m"
+        val health = "\u001B[31m${ship[shipNumber - 1].health}\u001B[0m"
+        val attack = "\u001B[34m${ship[shipNumber - 1].attack}u001B[0m"
+        val armor = "\u001B[33m${ship[shipNumber - 1].armor}\u001B[0m"
+        val level= "\u001B[32m${ship[shipNumber - 1].level}\u001B[0m"
            println(
+
                "Your choosed ship $shipNumber: \n " +
-                       "Ship: [${ship[shipNumber - 1].name}], HP: [${ship[shipNumber - 1].health}], Atack: [${ship[shipNumber - 1].attack}], Armor: [${ship[shipNumber - 1].armor}], Level: [${ship[shipNumber - 1].level}]"
+                       "Ship: [$name], HP: [$health], Atack: [$attack], Armor: [$armor], Level: [$level]"
            )
            var defenseMode = ship[shipNumber - 1].defense
            val defenseModeStatus =
@@ -134,9 +141,8 @@ fun menu1(ship: MutableList<PatrolShip>) {
                }
 
                4 -> {
-                   println("Test innere 4")
                    Thread.sleep(600)
-                   menu1(ship)
+                   gameRound(patrols)
                }
 
 
@@ -153,6 +159,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
 }
 
 
+
 fun move2(){
     Thread.sleep(1000)
     println("Attacking Enemy...")
@@ -162,9 +169,13 @@ fun move2(){
     println("Attacking Enemy.........")
 
 
-
 }
 
+fun gegnerAngriff1() {
+    for (enemy in enemys) {
+        enemy.normalAttack(patrols)
+    }
+}
 
 /*
     println("Attack [1]")

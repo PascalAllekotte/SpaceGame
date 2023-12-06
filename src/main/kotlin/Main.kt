@@ -1,3 +1,4 @@
+import Patrol.Enemy
 import Patrol.PatrolShip
 
 val itemList = mutableListOf<Items>(
@@ -11,8 +12,11 @@ var patrols = mutableListOf(
     PatrolShip("Cosmic Cargo",    1250.0, 40.0, true,  false, 1, 00.0)
 )
 
+val enemys =  mutableListOf(
+    Enemy("Killer", 1000.0, 55.0, false, false, 1, 0.0),
+    Enemy("Blackbeard", 1000.0, 55.0, false, false, 1, 0.0)
 
-
+)
 
     fun main() {
         var alive = true
@@ -30,13 +34,12 @@ var patrols = mutableListOf(
             println(patrolHealth) // total Health
             bag(itemList) // Items in storage
             gameRound(patrols)
-
-
+            gegnerAngriff1()
 
 
 
 //AB hier macht der Gegner seinen move
-            attackAllShips(patrols, 500.0)
+            // attackAllShips(patrols, 500.0)
             shipStats(patrols, round)
             var healthpoints = totalHP(patrols[0].health, patrols[1].health, patrols[2].health)
             if (healthpoints <= 0) {
@@ -49,6 +52,7 @@ var patrols = mutableListOf(
         }
         println("Game Over")
     }
+
 
 
 
