@@ -18,7 +18,8 @@ val enemys =  mutableListOf(
 
 )
 
-    fun main() {
+
+fun main() {
         var alive = true
 
         // Später noch Blinken lassen Spielstart Effekt einbauen

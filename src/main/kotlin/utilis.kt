@@ -118,6 +118,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
            var menu2 = readln().toInt() // Nur Zahlen
            when (menu2) {
                1 -> {
+                   itemsMenu(itemList)
                }
 
                2 -> {
@@ -201,14 +202,17 @@ fun attack2() {
         enemy.attack2(patrols)
     }
 }
-
+//_______________Spielverlauf_____________________________________________________________________
 fun afterEnemyStats (){
-    println("Decide now\n  Attack        [1]\n  Back to Ships[2]")
-    print("Choose:")
+    println("Decide now\n  Attack/Defense [1]\n  Back to Ships  [2]")
+    print("Choose: ")
     var actionInput = readln().toInt()
+    println("       ¯¯¯")
+
     when (actionInput){
         1 -> {
-        itemsMenu(liste =)
+            move2() // Angriff Patrols
+
         }
         2 -> {
             gameRound(patrols)
