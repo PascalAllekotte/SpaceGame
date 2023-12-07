@@ -22,6 +22,7 @@ val enemys =  mutableListOf(
 )
 
 
+
 fun main() {
         var alive = true
 
@@ -34,7 +35,7 @@ fun main() {
             var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health, coins)
             var coins = 0
 
-
+            angriffsZielWählen()
             shipStats(patrols, round) // Stats der Schiffe
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList) // Items im storage anzeigen

@@ -241,7 +241,18 @@ fun angriffZiele(){
         enemyStats(enemys, round)
         }
     }
+fun angriffsZielWählen(){
+    println("Attack: ${listEnemyNames(enemys)}")
 
+}
+
+fun listEnemyNames(enemys: MutableList<Enemy>) {
+    var vorzahl = 1
+    for (enemy in enemys) {
+        println("[$vorzahl]${enemy.name}")
+        vorzahl++
+    }
+}
 
 //--------Defensive-----= Kein Angriff
 fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
