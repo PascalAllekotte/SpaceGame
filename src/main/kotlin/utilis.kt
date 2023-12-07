@@ -73,7 +73,7 @@ fun bag(liste: MutableList<Items>) {
 }
 
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
-    println("\n Darth Rader attack Galactic Patrol.. Damage: [$damage]")
+    println("\n ${enemys[1].name} attack Galactic Patrol.. Damage: [$damage]")
     for (ship in patrolShip){
         var defenseDamge = if (ship.defense){
             ship.health -= damage - damage * 0.86
@@ -196,12 +196,13 @@ fun move2(){
 fun gegnerAngriff1() {
     for (enemy in enemys) {
         enemy.normalAttack(patrols)
+        break
     }
 }
 
 fun attack2() {
     for (enemy in enemys) {
-        enemy.attack2(patrols)
+        enemy.normalAttack(patrols)
     }
 }
 //_______________Spielverlauf nach GameRound_____________________________________________________________________

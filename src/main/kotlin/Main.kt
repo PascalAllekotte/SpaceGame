@@ -16,8 +16,8 @@ var patrols = mutableListOf(
 
 
 val enemys =  mutableListOf(
-    Enemy("AlienShip", 200.0, 55.0, false, false, 2, 0.0),
-    Enemy("AlienShip2", 200.0, 55.0, false, false, 2, 0.0)
+    Enemy("BlueAlien", 200.0, 55.0, false, false, 2, 0.0),
+    Enemy("GreenAlien", 200.0, 55.0, false, false, 2, 0.0)
 
 )
 
@@ -37,14 +37,14 @@ fun main() {
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
-            afterGameRound()
-            angriffsZielWählen()
-            readln().toIntOrNull()
-
-
+            println("\n----Move noch in Bearbeitung---\n")
+//AB hier macht der Gegner seinen move
+            gegnerAngriff1()
             attackAllShips(patrols, 500.0) // Gegner attackiert alle Schiffe
 
 
+            print("Press Enter for next Round")
+            readln().toIntOrNull()
             //attack2()
 
             // gegnerAngriff1()
@@ -58,8 +58,7 @@ fun main() {
             if (healthpoints <= 0) {
                 alive = false
             }
-            print("Round ends: Pressenter")
-            readln().toIntOrNull()
+
             println("----------------Next round!--------------")
             round++
             coins+=20

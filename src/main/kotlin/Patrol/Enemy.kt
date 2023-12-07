@@ -16,12 +16,7 @@ class Enemy (name: String, health: Double, attack: Double, defense: Boolean, ene
         } else {
             patrols[zufallsGenerator].health -= damage
         }
-
-
-
-
-        println(" führt einen Spezialangriff aus und fügt ${patrols[zufallsGenerator].name} $damage Schaden zu!")
-
+        println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of [$damage]!")
     }
 
     fun attack2 (patrol: MutableList<PatrolShip>) {
