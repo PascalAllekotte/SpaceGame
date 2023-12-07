@@ -1,6 +1,7 @@
 import Patrol.Enemy
 import Patrol.PatrolShip
 
+
 fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Any): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
     var healthColor = "\u001B[31m$patrolHP\u001B[0m"
@@ -105,7 +106,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
         println(
 
                "Your choosed ship $shipNumber: \n " +
-                       "Ship: [$name], HP: [$health], Atack: [$attack], Armor: [$armor], Level: [$level]"
+                       "Ship: [$name], HP: [$health], Attack: [$attack], Armor: [$armor], Level: [$level]"
            )
            var defenseMode = ship[shipNumber - 1].defense
            val defenseModeStatus =
@@ -202,7 +203,7 @@ fun attack2() {
         enemy.attack2(patrols)
     }
 }
-//_______________Spielverlauf_____________________________________________________________________
+//_______________Spielverlauf nach GameRound_____________________________________________________________________
 fun afterEnemyStats (){
     println("Decide now\n  Attack/Defense [1]\n  Back to Ships  [2]")
     print("Choose: ")
@@ -211,7 +212,7 @@ fun afterEnemyStats (){
 
     when (actionInput){
         1 -> {
-            move2() // Angriff Patrols
+            angriffZiele()
         }
         2 -> {
             gameRound(patrols)
@@ -231,11 +232,21 @@ fun afterEnemyStats (){
     }
 //------------------Zerstörtes Patrol SHIP
 
-fun überprüfungOnPatrol(){
+fun angriffZiele(){
 
-    for (patrolShip in patrols) {
-        patrolShip.zerstört()
+    if (überprüfeAufvollDefensive(patrols)){
+        println("   All ships in 'Defensive' mode.\n      Not possible to attack.")
+    } else {
+        println("You can attack following ships:")
+        enemyStats(enemys, round)
+        }
     }
+
+
+
+fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
+
+    return patrols.all { it.defense }
 }
 
 /*
@@ -250,3 +261,4 @@ fun überprüfungOnPatrol(){
 
 
  */
+
