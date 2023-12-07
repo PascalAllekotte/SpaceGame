@@ -34,8 +34,6 @@ fun main() {
         while (alive) {
             var patrolHealth = healthPatrol(patrols[0].health, patrols[1].health, patrols[2].health, coins)
             var coins = 0
-
-            angriffsZielWählen()
             shipStats(patrols, round) // Stats der Schiffe
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList) // Items im storage anzeigen
@@ -43,7 +41,7 @@ fun main() {
             afterEnemyStats()
 
             attackAllShips(patrols, 500.0) // Gegner attackiert alle Schiffe
-
+            angriffsZielWählen()
 
             //attack2()
 
@@ -53,7 +51,7 @@ fun main() {
 
 //AB hier macht der Gegner seinen move
            // attackAllShips(patrols, 500.0)
-            shipStats(patrols, round)
+           // shipStats(patrols, round)
             var healthpoints = totalHP(patrols[0].health, patrols[1].health, patrols[2].health)
             if (healthpoints <= 0) {
                 alive = false
