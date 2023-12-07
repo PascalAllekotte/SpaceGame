@@ -55,7 +55,7 @@ fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
         println("|Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus] |")
     }
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
-    afterEnemyStats()
+
 }
 
 
@@ -124,11 +124,11 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
                2 -> {
                    if (!defenseMode) {
-                       Thread.sleep(600)
+                       Thread.sleep(400)
                        println("Defensive Mode activated.")
-                       Thread.sleep(600)
+                       Thread.sleep(400)
                        println("Attackmode deactivated.")
-                       Thread.sleep(2000)
+                       Thread.sleep(600)
                        ship[shipNumber - 1].defense = true
 
                    } else {
@@ -243,9 +243,8 @@ fun angriffZiele(){
     }
 
 
-
+//--------Defensive-----= Kein Angriff
 fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
-
     return patrols.all { it.defense }
 }
 
