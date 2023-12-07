@@ -96,7 +96,7 @@ fun gameRound (ship: MutableList<PatrolShip>){
 }
 
 fun menu1(ship: MutableList<PatrolShip>) {
-    print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue [4]: ")
+    print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ")
     var shipNumber = readln().toInt()
     println("                                                 ¯¯¯")
 
