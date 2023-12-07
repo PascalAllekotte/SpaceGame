@@ -262,10 +262,10 @@ fun angriffsZielWählen(){
 
 
 fun listEnemyNames(enemys: MutableList<Enemy>) {
-    var vorzahl = 1
+    var nummerierung = 1
     for (enemy in enemys) {
-        println("   [$vorzahl]${enemy.name}")
-        vorzahl++
+        println("   [$nummerierung]${enemy.name}")
+        nummerierung++
     }
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 

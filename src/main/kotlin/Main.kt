@@ -70,7 +70,7 @@ fun main() {
 
 
 
-
+//patrols[0].level += 1
 // rot    println("\u001B[31mThis text is red.\u001B[0m")
 // blau   println("\u001B[34mThis text is blue.\u001B[0m")
 // grün   println("\u001B[32mThis text is green.\u001B[0m")
