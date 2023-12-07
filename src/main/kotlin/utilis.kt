@@ -2,7 +2,7 @@ import Patrol.Enemy
 import Patrol.PatrolShip
 
 
-fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Any): String{
+fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Int): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
     var healthColor = "\u001B[31m$patrolHP\u001B[0m"
     var coinColor = "\u001B[38;5;208m$coins\u001B[0m"
@@ -175,7 +175,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
        4 ->   {
 
-
+        afterGameRound()
 
        }
     }
@@ -205,7 +205,7 @@ fun attack2() {
     }
 }
 //_______________Spielverlauf nach GameRound_____________________________________________________________________
-fun afterEnemyStats (){
+fun afterGameRound (){
     println("Decide now\n  Attack/Defense [1]\n  Back to Ships  [2]")
     print("Choose: ")
     var actionInput = readln().toInt()
@@ -236,23 +236,39 @@ fun afterEnemyStats (){
 fun angriffZiele(){
 
     if (überprüfeAufvollDefensive(patrols)){
-        println("   All ships in 'Defensive' mode.\n      Not possible to attack.")
+        println("   All ships in 'Defensive' mode.\n      Continue without attacking.")
+
     } else {
         println("You can attack following ships:")
         enemyStats(enemys, round)
+        angriffsZielWählen()
         }
     }
 fun angriffsZielWählen(){
-    println("Attack: ${listEnemyNames(enemys)}")
+    listEnemyNames(enemys)
+    print("Decide: ")
+    var auswahl = readln().toInt()
+    when (auswahl){
+        1 -> {
+            println("Attack with all [1] or with...")
+            print("Choose: ")
+            var auswahl2 = readln().toInt()
+            // nur für den effect nach bestätigung noch nicht codiert
+            move2()
+        }
+    }
 
 }
+
 
 fun listEnemyNames(enemys: MutableList<Enemy>) {
     var vorzahl = 1
     for (enemy in enemys) {
-        println("[$vorzahl]${enemy.name}")
+        println("   [$vorzahl]${enemy.name}")
         vorzahl++
     }
+    println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
+
 }
 
 //--------Defensive-----= Kein Angriff
