@@ -212,7 +212,6 @@ fun afterEnemyStats (){
     when (actionInput){
         1 -> {
             move2() // Angriff Patrols
-
         }
         2 -> {
             gameRound(patrols)
@@ -230,7 +229,14 @@ fun afterEnemyStats (){
         }
 
     }
+//------------------Zerstörtes Patrol SHIP
 
+fun überprüfungOnPatrol(){
+
+    for (patrolShip in patrols) {
+        patrolShip.zerstört()
+    }
+}
 
 /*
     println("Attack [1]")

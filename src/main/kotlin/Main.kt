@@ -35,8 +35,8 @@ fun main() {
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
-            afterEnemyStats() // Gegner Stats anzeigen
-            attackAllShips(patrols, 100.0) // Gegner attackiert alle Schiffe
+            attackAllShips(patrols, 500.0) // Gegner attackiert alle Schiffe
+            überprüfungOnPatrol()
 
 
             //attack2()
@@ -52,7 +52,8 @@ fun main() {
             if (healthpoints <= 0) {
                 alive = false
             }
-           readln().toString()
+
+            readln().toString()
             println("----------------Next round!--------------")
             round++
             println("\n")

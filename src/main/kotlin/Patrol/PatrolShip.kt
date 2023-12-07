@@ -9,6 +9,11 @@ class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean
     var armor = armor
     var defense = defense
 
+    fun zerstört(){
+        if(health <= 0)(
+                println("Your spaceship '$name' got destroyed....")
+                )
+    }
 
 
 }

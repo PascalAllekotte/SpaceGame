@@ -48,6 +48,12 @@ class Enemy (name: String, health: Double, attack: Double, defense: Boolean, ene
     var armor = armor
     var defense = defense
 
+    // Mitteilung wenn gegnerisches Raumschiff zerstört wurde.
+    fun zerstört(){
+        if(health <= 0)(
+            println("Enemy spaceship '$name' destroyed....")
+        )
+    }
 
 }
 // println(" Enemy ship attacking all Galactic Patrol ships with a damage of $damage ")
