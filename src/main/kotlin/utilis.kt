@@ -1,18 +1,23 @@
 import Patrol.Enemy
 import Patrol.PatrolShip
 
+fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
+    val patrolHP = ships.sumByDouble { it.health }
+    val healthColor = "\u001B[31m$patrolHP\u001B[0m"
+    val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
+    return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
+}
 
-fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Int): String{
+/*fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Int): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
     var healthColor = "\u001B[31m$patrolHP\u001B[0m"
     var coinColor = "\u001B[38;5;208m$coins\u001B[0m"
     return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
 
 }
-fun totalHP(shipHP: Double, shipHP2: Double, shipHP3: Double): Double {
-
-    var patrolHP = shipHP + shipHP2 + shipHP3
-    return patrolHP
+ */
+fun totalHP(ships: MutableList<PatrolShip>): Double {
+    return ships.sumByDouble { it.health }
 }
 
 
@@ -73,7 +78,7 @@ fun bag(liste: MutableList<Items>) {
 }
 
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
-    println("\n Darth Rader attack Galactic Patrol.. Damage: [$damage]")
+    println(" ${enemys[1].name} attack Galactic Patrol.. Damage: [$damage]")
     for (ship in patrolShip){
         var defenseDamge = if (ship.defense){
             ship.health -= damage - damage * 0.86
@@ -186,7 +191,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
 fun move2(){
     Thread.sleep(1000)
-    println("Attacking Enemy...")
+    println("\nAttacking Enemy...")
     Thread.sleep(1000)
     println("Attacking Enemy......")
     Thread.sleep(1000)
@@ -196,12 +201,13 @@ fun move2(){
 fun gegnerAngriff1() {
     for (enemy in enemys) {
         enemy.normalAttack(patrols)
+        break
     }
 }
 
 fun attack2() {
     for (enemy in enemys) {
-        enemy.attack2(patrols)
+        enemy.normalAttack(patrols)
     }
 }
 //_______________Spielverlauf nach GameRound_____________________________________________________________________
@@ -253,6 +259,7 @@ fun angriffsZielWählen(){
             println("Attack with all [1] or with...")
             print("Choose: ")
             var auswahl2 = readln().toInt()
+            println("\n")
             // nur für den effect nach bestätigung noch nicht codiert
             move2()
         }

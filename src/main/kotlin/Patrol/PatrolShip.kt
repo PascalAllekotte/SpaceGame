@@ -37,4 +37,14 @@ class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean
             val attackAnstieg = health * 0.2
         }
     }
+
+
+        fun zerstört(list: MutableList<PatrolShip>) {
+            if (health <= 0) {
+                println("Your spaceship '$name' got destroyed....")
+                list.removeIf { it.name == name }
+
+            }
+        }
+
 }
