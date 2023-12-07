@@ -25,7 +25,7 @@ val enemys =  mutableListOf(
 
 fun main() {
         var alive = true
-
+    var coins = 0
         // Später noch Blinken lassen Spielstart Effekt einbauen
         println("                                Galactic Patrol")
         println("______________________________________________________________________________________")
@@ -39,9 +39,12 @@ fun main() {
             bag(itemList) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             afterEnemyStats()
+            angriffsZielWählen()
+            readln().toIntOrNull()
+
 
             attackAllShips(patrols, 500.0) // Gegner attackiert alle Schiffe
-            angriffsZielWählen()
+
 
             //attack2()
 
@@ -60,6 +63,7 @@ fun main() {
             readln().toIntOrNull()
             println("----------------Next round!--------------")
             round++
+            coins+20
             println("\n")
         }
         println("Game Over")

@@ -175,7 +175,8 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
        4 ->   {
 
-           enemyStats(enemys, round)
+
+
        }
     }
 
@@ -260,9 +261,6 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
 }
 
 /*
-    println("Attack [1]")
-    println("Use Item [1]")
-    println("Repair Ship [1]")
 
     Defensemodus Atacke rezuzieren
       var defenseDamge = if (ship.defense){
