@@ -3,7 +3,7 @@ package Patrol
 import patrols
 
 
-class Enemy (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true){
+class Enemy(name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true){
 
     fun normalAttack (patrol: MutableList<PatrolShip>) {
         val zufallsGenerator = (0 until patrols.size).random()
@@ -46,8 +46,8 @@ class Enemy (name: String, health: Double, attack: Double, defense: Boolean, ene
     // Mitteilung wenn gegnerisches Raumschiff zerstört wurde.
     fun zerstört(){
         if(health <= 0)(
-            println("Enemy spaceship '$name' destroyed....")
-        )
+                println("Enemy spaceship '$name' destroyed....")
+                )
     }
 
 }

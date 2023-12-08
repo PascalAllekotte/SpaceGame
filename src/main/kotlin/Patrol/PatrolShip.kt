@@ -41,7 +41,7 @@ class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean
 
         fun zerstört(list: MutableList<PatrolShip>) {
             if (health <= 0) {
-                println("Your spaceship '$name' got destroyed....")
+                println("<-Your spaceship '$name' got destroyed....")
                 list.removeIf { it.name == name }
 
             }
