@@ -2,7 +2,7 @@ import Patrol.Enemy
 import Patrol.PatrolShip
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
-    val patrolHP = ships.sumByDouble { it.health }
+    val patrolHP = ships.sumOf { it.health }
     val healthColor = "\u001B[31m${"%.1f".format(patrolHP)}\u001B[0m"
     val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
     return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
@@ -17,7 +17,7 @@ fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
 }
  */
 fun totalHP(ships: MutableList<PatrolShip>): Double {
-    return ships.sumByDouble { it.health }
+    return ships.sumOf { it.health }
 }
 
 
@@ -76,7 +76,7 @@ fun bag(liste: MutableList<Items>) {
     }
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 }
-
+//-------------Angriff des gegners Auf alle Patrols
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
     println(" ${enemys[1].name} attack Galactic Patrol.. Damage: [$damage]")
     for (ship in patrolShip){
@@ -88,6 +88,22 @@ fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
     }
     //println("\n  After attack")
 }
+
+//-------------angriff der gesamten patrols
+fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<Enemy>) {
+    if (patrolShips.any { !it.defense }) {
+        val totalAttackPoints = patrolShips.filter { !it.defense }.sumOf { it.attack }
+
+        for (enemy in enemies) {
+            val defenseMultiplier = if (enemy.defense) 0.86 else 1.0
+            val damage = totalAttackPoints * defenseMultiplier
+            enemy.health -= damage
+            println("${enemy.name} is under attack! Damage: $damage")
+        }
+    }
+}
+    //println("\n  After attack")
+
 
 fun gameRound (ship: MutableList<PatrolShip>){
 
@@ -290,15 +306,27 @@ fun angriffsZielWählen(){
     print("Decide: ")
     var auswahl = readln().toInt()
     when (auswahl){
-        1 -> {
+        1,2 -> {
             println("Attack with:\n     [1] All ship/s\n${attackModeShips(patrols)}")
             print("Choose: ")
             var auswahl2 = readln().toInt()
+            if (auswahl2 == 1){
+                attackAllEnemies(patrols, enemys)
+                move2()
+
+
             // nur für den effect nach bestätigung noch nicht codiert
-            move2()
+
+            }
+
         }
+
     }
 
+}
+fun attackModeShips(patrols: MutableList<PatrolShip>): String{
+    val attackModeShips = patrols.filter { !it.defense }
+    return attackModeShips.mapIndexed { index, ship -> "     [${index + 2}] ${ship.name}" }.joinToString("\n")
 }
 
 
@@ -318,10 +346,6 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
 }
 
 //--------AtackierModus= Schiffe anzeigen
-fun attackModeShips(patrols: MutableList<PatrolShip>): String{
-    val attackModeShips = patrols.filter { !it.defense }
-    return attackModeShips.mapIndexed { index, ship -> "     [${index + 2}] ${ship.name}" }.joinToString("\n")
-}
 
 
 
