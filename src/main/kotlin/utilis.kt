@@ -152,7 +152,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
                        println("Attackmode activated.")
                        Thread.sleep(600)
                        println("Defensive deactivated.")
-                       Thread.sleep(2000)
+                       Thread.sleep(1000)
                        ship[shipNumber - 1].defense = false
 
                    } else {
@@ -238,16 +238,40 @@ fun afterGameRound (){
             println("Choose: ")
             var auswahl = readln().toInt()
             when (auswahl) {
-                1 -> println("          Item Store" +
-                           "\n        ¯¯¯¯¯¯¯¯¯¯¯¯¯")
+                1 -> {
+                    println(
+                        "          Item Store" +
+                                "\n        ¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                    )
+                   storeListe()
 
+                }
+
+                2 -> {
+                    return
+
+                }
             }
         } else {
             println("$liste")
         }
 
     }
-//------------------Zerstörtes Patrol SHIP
+
+
+fun storeListe() {
+    // ChatGPT hat geholfen, um die 2 Blöcke zu bauen
+    val halfSize = storeItems.size / 2
+    val firstBlock = storeItems.subList(0, halfSize)
+    val secondBlock = storeItems.subList(halfSize, storeItems.size)
+
+    for ((index, item) in firstBlock.withIndex()) {
+        println("[${index + 1}] ${item.name}".padEnd(25) + "[${index + halfSize + 1}] ${secondBlock[index].name}")
+    }
+}
+
+
+//------------------Angriffe
 
 fun angriffZiele(){
 
@@ -293,6 +317,8 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
     return patrols.all { it.defense }
 }
 
+
+
 /*
 
     Defensemodus Atacke rezuzieren
@@ -303,4 +329,3 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
 
 
  */
-
