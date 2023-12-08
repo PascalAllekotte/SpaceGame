@@ -268,6 +268,7 @@ fun storeListe() {
     for ((index, item) in firstBlock.withIndex()) {
         println("[${index + 1}] ${item.name}".padEnd(25) + "[${index + halfSize + 1}] ${secondBlock[index].name}")
     }
+    println("\n")
 }
 
 
@@ -290,10 +291,9 @@ fun angriffsZielWählen(){
     var auswahl = readln().toInt()
     when (auswahl){
         1 -> {
-            println("Attack with all [1] or with...")
+            println("Attack with:\n All ship [1]\n ${attackModeShips(patrols)}")
             print("Choose: ")
             var auswahl2 = readln().toInt()
-            println("\n")
             // nur für den effect nach bestätigung noch nicht codiert
             move2()
         }
@@ -315,6 +315,12 @@ fun listEnemyNames(enemys: MutableList<Enemy>) {
 //--------Defensive-----= Kein Angriff
 fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
     return patrols.all { it.defense }
+}
+
+//--------AtackierModus= Schiffe anzeigen
+fun attackModeShips(patrols: MutableList<PatrolShip>): List<String> {
+    val attackModeShips = patrols.filter { !it.defense }
+    return attackModeShips.map { it.name }
 }
 
 
