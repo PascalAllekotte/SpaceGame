@@ -230,10 +230,20 @@ fun afterGameRound (){
 //______________Items im Gameround Menü_____________________________________
 
     fun itemsMenu (liste: MutableList<Items>){
-        if (liste.isNotEmpty()){
-            println("$liste")
+        if (liste.isEmpty() && coins <= 0){
+            println("No Coins/Items in Storage")
+        } else if (coins >= 0 && liste.isEmpty()){
+            println("\n No items in storage!\n=>Show store?")
+            println("   Yes [1]\n   No  [2]")
+            println("Choose: ")
+            var auswahl = readln().toInt()
+            when (auswahl) {
+                1 -> println("          Item Store" +
+                           "\n        ¯¯¯¯¯¯¯¯¯¯¯¯¯")
+
+            }
         } else {
-            println("No Items in Storage")
+            println("$liste")
         }
 
     }

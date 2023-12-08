@@ -46,7 +46,7 @@ fun main() {
 //AB hier macht der Gegner seinen move
             gegnerAngriff1()
             patrols.forEach { it.zerstört(patrols)}
-            attackAllShips(patrols, 500.0) // Gegner attackiert alle Schiffe
+            attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
             patrols.forEach { it.zerstört(patrols)}
 
 
