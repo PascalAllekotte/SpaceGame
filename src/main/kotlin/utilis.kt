@@ -98,7 +98,7 @@ fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<
             val defenseMultiplier = if (enemies[auswahl].defense) 0.86 else 1.0
             val damage = totalAttackPoints * defenseMultiplier
             enemies[auswahl].health -= damage
-            println("${enemies[auswahl].name} is under attack! Damage: $damage")
+            println("=>${enemies[auswahl].name} is under attack! Damage: [$damage]")
         }
     }
 
