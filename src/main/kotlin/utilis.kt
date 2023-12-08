@@ -3,7 +3,7 @@ import Patrol.PatrolShip
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
     val patrolHP = ships.sumByDouble { it.health }
-    val healthColor = "\u001B[31m$patrolHP\u001B[0m"
+    val healthColor = "\u001B[31m${"%.1f".format(patrolHP)}\u001B[0m"
     val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
     return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
 }
@@ -32,9 +32,9 @@ fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
     println("__________Stats of your ships:__________    Round: $round    __________")
     for (ship in patrols) {
         val nameColor = "\u001B[97m${ship.name}\u001B[0m"
-        val healthColor = "\u001B[31m${ship.health}\u001B[0m"
-        val attackColor = "\u001B[34m${ship.attack}\u001B[0m"
-        val armorColor = "\u001B[33m${ship.armor}\u001B[0m"
+        val healthColor = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
+        val attackColor = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
+        val armorColor = "\u001B[33m${"%.1f".format(ship.armor)}\u001B[0m"
         val levelColor = "\u001B[32m${ship.level}\u001B[0m"
         // val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
         val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
@@ -49,9 +49,9 @@ fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
     println("|__________Stats of the Enemy Ships:____________________________________________________")
     for (ship in enemys) {
         val nameColor = "\u001B[97m${ship.name}\u001B[0m"
-        val healthColor = "\u001B[31m${ship.health}\u001B[0m"
-        val attackColor = "\u001B[34m${ship.attack}\u001B[0m"
-        val armorColor = "\u001B[33m${ship.armor}\u001B[0m"
+        val healthColor = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
+        val attackColor = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
+        val armorColor = "\u001B[33m${"%.1f".format(ship.armor)}\u001B[0m"
         val levelColor = "\u001B[32m${ship.level}\u001B[0m"
         // val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
         val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
@@ -103,9 +103,9 @@ fun menu1(ship: MutableList<PatrolShip>) {
    when (shipNumber) {
     1, 2, 3 ->   {
         val name = "\u001B[97m${ship[shipNumber - 1].name}\u001B[0m"
-        val health = "\u001B[31m${ship[shipNumber - 1].health}\u001B[0m"
-        val attack = "\u001B[34m${ship[shipNumber - 1].attack}\u001B[0m"
-        val armor = "\u001B[33m${ship[shipNumber - 1].armor}\u001B[0m"
+        val health = "\u001B[31m${"%.1f".format(ship[shipNumber - 1].health)}\u001B[0m"
+        val attack = "\u001B[34m${"%.1f".format(ship[shipNumber - 1].attack)}\u001B[0m"
+        val armor = "\u001B[33m${"%.1f".format(ship[shipNumber - 1].armor)}\u001B[0m"
         val level= "\u001B[32m${ship[shipNumber - 1].level}\u001B[0m"
 
         println(
@@ -289,6 +289,7 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
       var defenseDamge = if (ship.defense){
             ship.health -= damage - damage * 0.86
 
+ auf eine nachkommastelle runden "%.1f".format
 
 
  */

@@ -32,7 +32,11 @@ fun main() {
 
 
         while (alive) {
-            println("----------------Next round!--------------")
+            if (round == 1){
+                print("")
+            } else {
+                println("----------------Next round!--------------")
+            }
             var patrolHealth = healthPatrol(patrols, coins)
             shipStats(patrols, round) // Stats der Schiffe
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
