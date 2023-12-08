@@ -291,7 +291,7 @@ fun angriffsZielWählen(){
     var auswahl = readln().toInt()
     when (auswahl){
         1 -> {
-            println("Attack with:\n All ship [1]\n ${attackModeShips(patrols)}")
+            println("Attack with:\n     [1] All ship/s\n${attackModeShips(patrols)}")
             print("Choose: ")
             var auswahl2 = readln().toInt()
             // nur für den effect nach bestätigung noch nicht codiert
@@ -318,9 +318,9 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
 }
 
 //--------AtackierModus= Schiffe anzeigen
-fun attackModeShips(patrols: MutableList<PatrolShip>): List<String> {
+fun attackModeShips(patrols: MutableList<PatrolShip>): String{
     val attackModeShips = patrols.filter { !it.defense }
-    return attackModeShips.map { it.name }
+    return attackModeShips.mapIndexed { index, ship -> "     [${index + 2}] ${ship.name}" }.joinToString("\n")
 }
 
 
