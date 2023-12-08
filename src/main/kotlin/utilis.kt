@@ -311,8 +311,9 @@ fun angriffsZielWählen(){
             print("Choose: ")
             var auswahl2 = readln().toInt()
             if (auswahl2 == 1){
-                attackAllEnemies(patrols, enemys, auswahl2)
                 move2()
+                attackAllEnemies(patrols, enemys, auswahl2)
+
 
 
             // nur für den effect nach bestätigung noch nicht codiert
