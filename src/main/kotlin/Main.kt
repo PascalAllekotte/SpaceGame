@@ -54,9 +54,10 @@ fun main() {
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             println("\n----Move noch in Bearbeitung---\n")
 //AB hier macht der Gegner seinen move
-            //gegnerAngriff1()
-            //patrols.forEach { it.zerstört(patrols)}
-            //attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
+            gegnerAngriff1()
+            patrols.forEach { it.zerstört(patrols)}
+            enemys.forEach { it.zerstört(enemys)}
+            attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
             //patrols.forEach { it.zerstört(patrols)}
 
 

@@ -49,6 +49,13 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, enem
                 println("Enemy spaceship '$name' destroyed....")
                 )
     }
+    fun zerstört(list: MutableList<Enemy>) {
+        if (health <= 0) {
+            println("->Enemy spaceship '$name' got destroyed....")
+
+
+        }
+    }
 
 }
 // println(" Enemy ship attacking all Galactic Patrol ships with a damage of $damage ")
