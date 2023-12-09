@@ -76,8 +76,8 @@ fun main() {
 
            // attackAllShips(patrols, 500.0)
            // shipStats(patrols, round)
-            var healthpoints = totalHP(patrols)
-            if (healthpoints <= 0) {
+
+            if (alleUnterOder0(patrols)) {
                 alive = false
             }
 

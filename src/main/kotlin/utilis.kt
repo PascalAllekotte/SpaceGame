@@ -21,6 +21,13 @@ fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
 }
  */
 
+
+//wenn alle unter 0 sind dann tot ansonsten nicht
+fun alleUnterOder0 (ship: MutableList<PatrolShip>) : Boolean{
+    return ship.all { it.health <= 0}
+    }
+
+
 // ----- Lebenspunkte summieren Patrol
 fun totalHP(ships: MutableList<PatrolShip>): Double {
     return ships.sumOf { it.health }

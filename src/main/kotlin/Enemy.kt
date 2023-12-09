@@ -5,6 +5,43 @@ import patrols
 
 class Enemy(name: String, health: Double, attack: Double, defense: Boolean, destroyed: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true,false) {
 
+    val name = name
+    var health = health
+    var attack = attack
+    var armor = armor
+    var defense = defense
+
+    private var maxHealth: Double = health
+    private var maxAttack: Double = attack
+
+    var level: Int = level
+        set(value) {
+            field = value
+            updateStats()
+        }
+
+    init {
+
+        updateStats()
+    }
+
+    private fun updateStats() {
+        val hpErhöhen = maxHealth * 0.3
+        val attackErhöhen = maxAttack * 0.2
+
+        maxHealth = maxHealth + hpErhöhen
+        maxAttack = maxAttack + attackErhöhen
+
+        health = maxHealth
+        attack = maxAttack
+
+        fun levelAufstieg() {
+            val healthAnstieg = health * 0.2
+            val attackAnstieg = health * 0.2
+        }
+    }
+
+
     fun normalAttack(patrol: MutableList<PatrolShip>) {
         val zufallsGenerator = (0 until patrols.size).random()
         val ziel = patrols[zufallsGenerator]
@@ -36,12 +73,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
         println("Das feindliche Schiff greift alle Galactic Patrol-Schiffe mit einem Schaden von $damage an.")
     }
 
-    val name = name
-    var health = health
-    var attack = attack
-    var level = level
-    var armor = armor
-    var defense = defense
+
 
     // Mitteilung wenn gegnerisches Raumschiff zerstört wurde.
 
