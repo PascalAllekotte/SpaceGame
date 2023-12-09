@@ -93,33 +93,6 @@ fun bag(liste: MutableList<Items>) {
     }
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 }
-//-------------Angriff des gegners Auf alle Patrols
-fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
-    println(" ${enemies[0].name} attack Galactic Patrol.. Damage: [$damage]")
-    for (ship in patrolShip){
-        var defenseDamge = if (ship.defense){
-            ship.health -= damage - damage * 0.86
-        } else {
-            ship.health -= damage
-        }
-    }
-    //println("\n  After attack")
-}
-
-//-------------angriff der gesamten patrols
-fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<Enemy>, auswahl: Int) {
-    if (patrolShips.any { !it.defense }) {
-        val totalAttackPoints = patrolShips.filter { !it.defense }.sumOf { it.attack }
-
-
-            val defenseMultiplier = if (enemies[auswahl].defense) 0.50 else 1.0
-            val damage = totalAttackPoints * defenseMultiplier
-            enemies[auswahl].health -= damage
-            println("=>${enemies[auswahl].name} is under attack! Damage: [$damage]")
-        }
-    }
-
-    //println("\n  After attack")
 
 
 fun gameRound (ship: MutableList<PatrolShip>){
@@ -231,13 +204,6 @@ fun move2(){
     println("Attacking Enemy.........")
 }
 
-fun gegnerAngriff1() {
-    for (enemy in enemies) {
-        if (!enemy.destroyed)
-        enemy.normalAttack(patrols)
-        break
-    }
-}
 
 fun attack2() {
     for (enemy in enemies) {
@@ -430,3 +396,54 @@ fun spawnEnemys (enemies: MutableList<Enemy>){
 
 
  */
+//---------------------Attacken
+fun gegnerAngriff1() {
+    val enemiesListe = enemies.filter { !it.destroyed }.shuffled()
+    for (enemy in enemiesListe) {
+        if (!enemy.destroyed){
+            enemy.normalAttack(patrols)}
+        break
+    }
+}
+
+//-------------Angriff des gegners Auf alle Patrols
+fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
+var printen = false
+    if (enemies[0].health <= 0){
+        enemies[0].destroyed = true
+    }
+    for (ship in patrolShip){
+        if (!enemies[0].destroyed) {
+            printen = true
+            var defenseDamge = if (ship.defense) {
+                ship.health -= damage - damage * 0.86
+            } else {
+                ship.health -= damage
+            }
+        }
+
+    }
+    if (printen){
+        println(" ${enemies[0].name} attack Galactic Patrol.. Damage: [$damage]")
+    }
+    //println("\n  After attack")
+}
+
+//-------------angriff der gesamten patrols
+fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<Enemy>, auswahl: Int) {
+    if (patrolShips.any { !it.defense }) {
+        val totalAttackPoints = patrolShips.filter { !it.defense }.sumOf { it.attack }
+
+
+        val defenseMultiplier = if (enemies[auswahl].defense) 0.50 else 1.0
+        val damage = totalAttackPoints * defenseMultiplier
+        enemies[auswahl].health -= damage
+        println("=>${enemies[auswahl].name} is under attack! Damage: [$damage]")
+
+    }
+    if (enemies[auswahl].health <= 0){
+        enemies[auswahl].destroyed = true
+    }
+}
+
+//println("\n  After attack")
