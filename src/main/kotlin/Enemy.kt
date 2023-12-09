@@ -3,9 +3,9 @@ package Patrol
 import patrols
 
 
-class Enemy(name: String, health: Double, attack: Double, defense: Boolean, destroyed: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true,false){
+class Enemy(name: String, health: Double, attack: Double, defense: Boolean, destroyed: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true,false) {
 
-    fun normalAttack (patrol: MutableList<PatrolShip>) {
+    fun normalAttack(patrol: MutableList<PatrolShip>) {
         val zufallsGenerator = (0 until patrols.size).random()
         val ziel = patrols[zufallsGenerator]
 
@@ -19,7 +19,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
         println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of [$damage]!")
     }
 
-    fun attack2 (patrol: MutableList<PatrolShip>) {
+    fun attack2(patrol: MutableList<PatrolShip>) {
         val level = patrols[0].level  // Annahme: Alle Schiffe haben das gleiche Level
         val damage = level * 80.0
 
@@ -52,11 +52,8 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
 
         }
     }
-    fun zerstörtAusListeLöschenEnemy(list: MutableList<Enemy>) {
-        if (health <= 0) {
-            list.remove(this)
-        }
-    }
 }
+
+
 
 // println(" Enemy ship attacking all Galactic Patrol ships with a damage of $damage ")

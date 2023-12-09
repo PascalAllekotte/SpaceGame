@@ -375,7 +375,7 @@ fun überprüfeObZerstört(patrols: MutableList<PatrolShip>, auswahl: Int): Bool
 }
 
 fun spawnEnemys (enemies: MutableList<Enemy>){
-    if (enemies.isEmpty()){
+    if (totalHPenemies(enemies) <= 0){
         enemies.add(
             Enemy("SilverAlien", 240.0, 55.0, false, false, false, 2, 0.0)
         )
