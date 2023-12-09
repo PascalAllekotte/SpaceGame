@@ -1,12 +1,16 @@
 import Patrol.Enemy
 import Patrol.PatrolShip
 
+
+
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
     val patrolHP = ships.sumOf { it.health }
     val healthColor = "\u001B[31m${"%.1f".format(patrolHP)}\u001B[0m"
     val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
     return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
 }
+
+
 
 /*fun healthPatrol (shipHP: Double, shipHP2: Double, shipHP3: Double, coins: Int): String{
     var patrolHP = (shipHP + shipHP2 + shipHP3)
@@ -16,7 +20,13 @@ fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
 
 }
  */
+
+// ----- Lebenspunkte summieren Patrol
 fun totalHP(ships: MutableList<PatrolShip>): Double {
+    return ships.sumOf { it.health }
+}
+// ----- Lebenspunkte summieren Enemies
+fun totalHPenemies(ships: MutableList<Enemy>): Double {
     return ships.sumOf { it.health }
 }
 
@@ -47,7 +57,7 @@ fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
 //____________________________Gegner________________________________________
 fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
     println("|__________Stats of the Enemy Ships:____________________________________________________")
-    for (ship in enemys) {
+    for (ship in enemies) {
         val nameColor = "\u001B[97m${ship.name}\u001B[0m"
         val healthColor = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
         val attackColor = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
@@ -78,7 +88,7 @@ fun bag(liste: MutableList<Items>) {
 }
 //-------------Angriff des gegners Auf alle Patrols
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
-    println(" ${enemys[1].name} attack Galactic Patrol.. Damage: [$damage]")
+    println(" ${enemies[0].name} attack Galactic Patrol.. Damage: [$damage]")
     for (ship in patrolShip){
         var defenseDamge = if (ship.defense){
             ship.health -= damage - damage * 0.86
@@ -215,14 +225,14 @@ fun move2(){
 }
 
 fun gegnerAngriff1() {
-    for (enemy in enemys) {
+    for (enemy in enemies) {
         enemy.normalAttack(patrols)
         break
     }
 }
 
 fun attack2() {
-    for (enemy in enemys) {
+    for (enemy in enemies) {
         enemy.normalAttack(patrols)
     }
 }
@@ -297,12 +307,12 @@ fun angriffZiele(){
 
     } else {
         println("You can attack following ships:")
-        enemyStats(enemys, round)
+        enemyStats(enemies, round)
         angriffsZielWählen()
         }
     }
 fun angriffsZielWählen(){
-    listEnemyNames(enemys)
+    listEnemyNames(enemies)
     print("Decide: ")
     var auswahl = readln().toInt()
     when (auswahl){
@@ -312,7 +322,7 @@ fun angriffsZielWählen(){
             var auswahl2 = readln().toInt()
             if (auswahl2 == 1){
                 move2()
-                attackAllEnemies(patrols, enemys, auswahl-1)
+                attackAllEnemies(patrols, enemies, auswahl-1)
 
 
 
@@ -345,6 +355,58 @@ fun listEnemyNames(enemys: MutableList<Enemy>) {
 fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
     return patrols.all { it.defense }
 }
+
+//-------Patrolship Zerstört true or false
+fun überprüfeObZerstörtPatrol(patrols: MutableList<PatrolShip>, auswahl: Int): Boolean{
+    if (auswahl in patrols.indices){
+        return patrols[auswahl].destroyed
+    } else {
+        return false
+    }
+}
+
+//-------Enemy Zerstört true or false
+fun überprüfeObZerstört(patrols: MutableList<PatrolShip>, auswahl: Int): Boolean{
+    if (auswahl in patrols.indices){
+        return patrols[auswahl].destroyed
+    } else {
+        return false
+    }
+}
+
+fun spawnEnemys (enemies: MutableList<Enemy>){
+    if (enemies.isEmpty()){
+        enemies.add(
+            Enemy("SilverAlien", 240.0, 55.0, false, false, false, 2, 0.0)
+        )
+        enemies.add(
+            Enemy("BadAlien", 230.0, 55.0, false, false, false, 2, 0.0)
+        )
+        enemies.add(
+            Enemy("Baddy", 240.0, 55.0, false, false, false, 2, 0.0)
+        )
+
+    }
+
+}
+
+/*fun spawnEnemys (enemies: MutableList<Enemy>){
+    if (enemies.isEmpty()){
+        enemies.add(
+            Enemy("SilverAlien", 240.0, 55.0, false, false, false, 2, 0.0)
+        )
+        enemies.add(
+            Enemy("BadAlien", 230.0, 55.0, false, false, false, 2, 0.0)
+        )
+        enemies.add(
+            Enemy("Baddy", 240.0, 55.0, false, false, false, 2, 0.0)
+        )
+
+    }
+
+}
+*/
+
 
 //--------AtackierModus= Schiffe anzeigen
 

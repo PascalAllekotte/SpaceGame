@@ -3,7 +3,7 @@ package Patrol
 import patrols
 
 
-class Enemy(name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true){
+class Enemy(name: String, health: Double, attack: Double, defense: Boolean, destroyed: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true,false){
 
     fun normalAttack (patrol: MutableList<PatrolShip>) {
         val zufallsGenerator = (0 until patrols.size).random()
@@ -44,11 +44,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, enem
     var defense = defense
 
     // Mitteilung wenn gegnerisches Raumschiff zerstört wurde.
-    fun zerstört(){
-        if(health <= 0)(
-                println("Enemy spaceship '$name' destroyed....")
-                )
-    }
+
     fun zerstört(list: MutableList<Enemy>) {
         if (health <= 0) {
             println("->Enemy spaceship '$name' got destroyed....")
@@ -56,6 +52,11 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, enem
 
         }
     }
-
+    fun zerstörtAusListeLöschenEnemy(list: MutableList<Enemy>) {
+        if (health <= 0) {
+            list.remove(this)
+        }
+    }
 }
+
 // println(" Enemy ship attacking all Galactic Patrol ships with a damage of $damage ")

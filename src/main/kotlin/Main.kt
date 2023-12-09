@@ -8,18 +8,18 @@ var round = 1
 var coins = 0
 
 var patrols = mutableListOf(
-    PatrolShip("Galactic Reaper", 1000.0, 55.0, false, false, 1, 0.0),
-    PatrolShip("Nebular Shooter", 920.0, 70.0, false,  false, 1, 0.0),
-    PatrolShip("Cosmic Cargo",    1250.0, 40.0, false,  false, 1, 00.0)
+    PatrolShip("Galactic Reaper", 1000.0, 55.0, false, false, false,1, 0.0),
+    PatrolShip("Nebular Shooter", 920.0, 80.0, false,  false, false,1, 0.0),
+    PatrolShip("Cosmic Cargo",    1250.0, 50.0, false,  false, false,1, 00.0)
 )
 
 
 
-val enemys =  mutableListOf(
-    Enemy("BlueAlien", 200.0, 55.0, false, false, 2, 0.0),
-    Enemy("GreenAlien", 200.0, 55.0, false, false, 2, 0.0)
-
+val enemies =  mutableListOf(
+    Enemy("BlueAlien", 200.0, 55.0, false, false, false, 2, 0.0),
+    Enemy("GreenAlien", 200.0, 55.0, false, false, false, 2, 0.0)
 )
+
 
 
 val storeItems =  mutableListOf(
@@ -36,12 +36,16 @@ val storeItems =  mutableListOf(
 fun main() {
         var alive = true
 
+
         // Später noch Blinken lassen Spielstart Effekt einbauen
         println("                                Galactic Patrol")
         println("______________________________________________________________________________________")
 
 
         while (alive) {
+            patrols.forEach { it.zerstörtAusListeLöschenPatrol(patrols)}
+            enemies.forEach { it.zerstörtAusListeLöschenEnemy(enemies)}
+            spawnEnemys(enemies) // fehler isempty durch health <= 0 austasuchen
             if (round == 1){
                 print("")
             } else {
@@ -54,9 +58,9 @@ fun main() {
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             println("\n----Move noch in Bearbeitung---\n")
 //AB hier macht der Gegner seinen move
-            gegnerAngriff1()
+            gegnerAngriff1() // KEIN FEHLER
             patrols.forEach { it.zerstört(patrols)}
-            enemys.forEach { it.zerstört(enemys)}
+            enemies.forEach { it.zerstört(enemies)}
             attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
             //patrols.forEach { it.zerstört(patrols)}
 
@@ -82,6 +86,7 @@ fun main() {
             println("\n")
         }
         println("Game Over")
+
     }
 
 

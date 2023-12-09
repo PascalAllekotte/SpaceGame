@@ -1,9 +1,10 @@
 package Patrol
 
-import enemys
+import enemies
 
-class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, false) {
+class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, destroyed: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, false, false) {
 
+    var destroyed = destroyed
     val name = name
     var health = health
     var attack = attack
@@ -44,24 +45,26 @@ class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean
         fun zerstört(list: MutableList<PatrolShip>) {
             if (health <= 0) {
                 println("<-Your spaceship '$name' got destroyed....")
-
-
             }
         }
 
-
+    fun zerstörtAusListeLöschenPatrol(list: MutableList<PatrolShip>) {
+        if (health <= 0) {
+            list.remove(this)
+        }
+    }
 
     fun normalAttack (patrol: MutableList<Enemy>) {
-        val zufallsGenerator = (0 until enemys.size).random()
-        val ziel = enemys[zufallsGenerator]
+        val zufallsGenerator = (0 until enemies.size).random()
+        val ziel = enemies[zufallsGenerator]
 
-        val level = enemys[zufallsGenerator].level
+        val level = enemies[zufallsGenerator].level
         val damage = level * 80.0
-        var defenseDamge = if (enemys[zufallsGenerator].defense) {
-            enemys[zufallsGenerator].health -= damage - damage * 0.82
+        var defenseDamge = if (enemies[zufallsGenerator].defense) {
+            enemies[zufallsGenerator].health -= damage - damage * 0.82
         } else {
-            enemys[zufallsGenerator].health -= damage
+            enemies[zufallsGenerator].health -= damage
         }
-        println(" ${name} attacks ${enemys[zufallsGenerator].name} with a damage of [$damage]!")
+        println(" ${name} attacks ${enemies[zufallsGenerator].name} with a damage of [$damage]!")
     }
 }
