@@ -43,10 +43,7 @@ fun main() {
 
 
         while (alive) {
-            spawnEnemys(enemies)              // fehler isempty durch health <= 0 austasuchen
 
-            patrols.forEach { it.zerstörtAusListeLöschenPatrol(patrols)}
-            zerstörtAusListeLöschenEnemy(enemies)
             if (round == 1){
                 print("")
             } else {
@@ -85,6 +82,10 @@ fun main() {
             round++
             coins+=20
             println("\n")
+                          // fehler isempty durch health <= 0 austasuchen
+            zerstörtAusListeLöschenPatrol(patrols)
+            zerstörtAusListeLöschenEnemy(enemies)
+            spawnEnemys(enemies)
         }
         println("Game Over")
 
@@ -93,7 +94,9 @@ fun main() {
 fun zerstörtAusListeLöschenEnemy(list: MutableList<Enemy>) {
     list.removeIf { enemy -> enemy.health <= 0 }
 }
-
+fun zerstörtAusListeLöschenPatrol(list: MutableList<PatrolShip>) {
+    list.removeIf { enemy -> enemy.health <= 0 }
+}
 
 
 //patrols[0].level += 1

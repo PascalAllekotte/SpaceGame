@@ -233,6 +233,7 @@ fun move2(){
 
 fun gegnerAngriff1() {
     for (enemy in enemies) {
+        if (!enemy.destroyed)
         enemy.normalAttack(patrols)
         break
     }

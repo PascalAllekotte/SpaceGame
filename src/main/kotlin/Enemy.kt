@@ -10,6 +10,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
     var attack = attack
     var armor = armor
     var defense = defense
+    var destroyed = false
 
     private var maxHealth: Double = health
     private var maxAttack: Double = attack
@@ -43,6 +44,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
 
 
     fun normalAttack(patrol: MutableList<PatrolShip>) {
+
         val zufallsGenerator = (0 until patrols.size).random()
         val ziel = patrols[zufallsGenerator]
 
@@ -80,7 +82,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
     fun zerstört(list: MutableList<Enemy>) {
         if (health <= 0) {
             println("->Enemy spaceship '$name' got destroyed....")
-
+            destroyed = true
 
         }
     }
