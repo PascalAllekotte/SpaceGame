@@ -85,6 +85,7 @@ fun main() {
                           // fehler isempty durch health <= 0 austasuchen
             zerstörtAusListeLöschenPatrol(patrols)
             zerstörtAusListeLöschenEnemy(enemies)
+            levelUP(enemies, patrols)
             spawnEnemys(enemies)
         }
         println("Game Over")

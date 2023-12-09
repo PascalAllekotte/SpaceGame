@@ -1,6 +1,6 @@
 import Patrol.Enemy
 import Patrol.PatrolShip
-
+import java.util.logging.Level
 
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
@@ -364,22 +364,15 @@ fun spawnEnemys (enemies: MutableList<Enemy>){
 
 }
 
-/*fun spawnEnemys (enemies: MutableList<Enemy>){
+fun levelUP (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>){
     if (enemies.isEmpty()){
-        enemies.add(
-            Enemy("SilverAlien", 240.0, 55.0, false, false, false, 2, 0.0)
-        )
-        enemies.add(
-            Enemy("BadAlien", 230.0, 55.0, false, false, false, 2, 0.0)
-        )
-        enemies.add(
-            Enemy("Baddy", 240.0, 55.0, false, false, false, 2, 0.0)
-        )
-
+        for (patrol in patrols){
+            patrol.level += 1
+        }
     }
 
 }
-*/
+
 
 
 //--------AtackierModus= Schiffe anzeigen
