@@ -95,7 +95,7 @@ fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<
         val totalAttackPoints = patrolShips.filter { !it.defense }.sumOf { it.attack }
 
 
-            val defenseMultiplier = if (enemies[auswahl].defense) 0.86 else 1.0
+            val defenseMultiplier = if (enemies[auswahl].defense) 0.50 else 1.0
             val damage = totalAttackPoints * defenseMultiplier
             enemies[auswahl].health -= damage
             println("=>${enemies[auswahl].name} is under attack! Damage: [$damage]")
@@ -312,7 +312,7 @@ fun angriffsZielWählen(){
             var auswahl2 = readln().toInt()
             if (auswahl2 == 1){
                 move2()
-                attackAllEnemies(patrols, enemys, auswahl2)
+                attackAllEnemies(patrols, enemys, auswahl-1)
 
 
 
