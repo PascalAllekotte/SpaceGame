@@ -54,12 +54,14 @@ fun main() {
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
-            println("\n----Move noch in Bearbeitung---\n")
-            enemies.forEach { it.zerstört(enemies)}
+            enemies.forEach { it.zerstört(enemies)} // Printed wenn eins zerstört wurde vom gegner
+            zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
+
 //AB hier macht der Gegner seinen move
-            gegnerAngriff1() // KEIN FEHLER
-            patrols.forEach { it.zerstört(patrols)}
-            attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
+            move3()
+            // gegnerAngriff1() // KEIN FEHLER
+            // patrols.forEach { it.zerstört(patrols)}
+            // attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
             //patrols.forEach { it.zerstört(patrols)}
 
 
@@ -104,3 +106,6 @@ fun zerstörtAusListeLöschenPatrol(list: MutableList<PatrolShip>) {
 // rot    println("\u001B[31mThis text is red.\u001B[0m")
 // blau   println("\u001B[34mThis text is blue.\u001B[0m")
 // grün   println("\u001B[32mThis text is green.\u001B[0m")
+
+
+

@@ -196,13 +196,43 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
 
 fun move2(){
-    Thread.sleep(1000)
+    if (!überprüfeAufvollDefensive(patrols))
+    Thread.sleep(500)
+    println("_____________________________________")
     println("\nAttacking Enemy...")
-    Thread.sleep(1000)
-    println("Attacking Enemy......")
-    Thread.sleep(1000)
-    println("Attacking Enemy.........")
+    Thread.sleep(400)
+    println("=> =>")
+        Thread.sleep(200)
+        println("=>     =>")
+        Thread.sleep(100)
+        println("   => =>")
+        Thread.sleep(200)
+        println("  =>         =>")
+
+    println("Attacking Enemy.......")
+    Thread.sleep(700)
+
 }
+fun move3(){
+    if (!enemies.isEmpty()){
+    println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
+    println("\n______Enemy shoots back______________!")
+
+        Thread.sleep(400)
+        println("<= <=")
+        Thread.sleep(200)
+        println("<=     <=")
+    gegnerAngriff1()
+        Thread.sleep(100)
+        println("   <= <=")
+        Thread.sleep(200)
+    attackAllShips(patrols, 370.0)
+    println("  <=         <=\n \n \n")
+    Thread.sleep(700)}
+    patrols.forEach { it.zerstört(patrols)}
+
+}
+
 
 
 fun attack2() {
