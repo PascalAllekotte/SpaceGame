@@ -1,6 +1,5 @@
 import Patrol.Enemy
 import Patrol.PatrolShip
-import java.util.logging.Level
 
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
@@ -102,95 +101,110 @@ fun gameRound (ship: MutableList<PatrolShip>){
 }
 
 fun menu1(ship: MutableList<PatrolShip>) {
-    print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ")
-    var shipNumber = readln().toInt()
-    println("                                                 ¯¯¯")
+    var richtigeEingabe = false
+    while (!richtigeEingabe) {
 
-   when (shipNumber) {
-    1, 2, 3 ->   {
-        val name = "\u001B[97m${ship[shipNumber - 1].name}\u001B[0m"
-        val health = "\u001B[31m${"%.1f".format(ship[shipNumber - 1].health)}\u001B[0m"
-        val attack = "\u001B[34m${"%.1f".format(ship[shipNumber - 1].attack)}\u001B[0m"
-        val armor = "\u001B[33m${"%.1f".format(ship[shipNumber - 1].armor)}\u001B[0m"
-        val level= "\u001B[32m${ship[shipNumber - 1].level}\u001B[0m"
-
-        println(
-
-               "Your choosed ship $shipNumber: \n " +
-                       "Ship: [$name], HP: [$health], Attack: [$attack], Armor: [$armor], Level: [$level]"
-           )
-           var defenseMode = ship[shipNumber - 1].defense
-           val defenseModeStatus =
-               if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
-           val attackModeStatus =
-               if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+        print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ")
+        try {
+            var shipNumber = readln().toInt()
+            println("                                                 ¯¯¯")
 
 
-           print("Actions:\n  Use Items    [1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode   [3]    $attackModeStatus\n  Back[4]\nChoose: ")
-           var menu2 = readln().toInt() // Nur Zahlen
-           when (menu2) {
-               1 -> {
-                   itemsMenu(itemList)
-               }
+            when (shipNumber) {
+                1, 2, 3 -> {
+                    val name = "\u001B[97m${ship[shipNumber - 1].name}\u001B[0m"
+                    val health = "\u001B[31m${"%.1f".format(ship[shipNumber - 1].health)}\u001B[0m"
+                    val attack = "\u001B[34m${"%.1f".format(ship[shipNumber - 1].attack)}\u001B[0m"
+                    val armor = "\u001B[33m${"%.1f".format(ship[shipNumber - 1].armor)}\u001B[0m"
+                    val level = "\u001B[32m${ship[shipNumber - 1].level}\u001B[0m"
 
-               2 -> {
-                   if (!defenseMode) {
-                       Thread.sleep(400)
-                       println("Defensive Mode activated.")
-                       Thread.sleep(400)
-                       println("Attackmode deactivated.")
-                       Thread.sleep(600)
-                       ship[shipNumber - 1].defense = true
+                    println(
 
-                   } else {
-                       Thread.sleep(600)
-                       println("Defense mode is already activated.")
-                       Thread.sleep(600)
-
-                   }
-                   Thread.sleep(600)
-
-               }
-
-               3 -> {
-                   if (defenseMode) {
-                       Thread.sleep(600)
-                       println("Attackmode activated.")
-                       Thread.sleep(600)
-                       println("Defensive deactivated.")
-                       Thread.sleep(1000)
-                       ship[shipNumber - 1].defense = false
-
-                   } else {
-                       Thread.sleep(600)
-                       println("Attack mode is already activated.")
-                       Thread.sleep(600)
-
-                   }
-                   Thread.sleep(600)
-
-               }
-
-               4 -> {
-                   Thread.sleep(600)
-                gameRound(patrols)
-               }
+                        "Your choosed ship $shipNumber: \n " +
+                                "Ship: [$name], HP: [$health], Attack: [$attack], Armor: [$armor], Level: [$level]"
+                    )
+                    var defenseMode = ship[shipNumber - 1].defense
+                    val defenseModeStatus =
+                        if (defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
+                    val attackModeStatus =
+                        if (!defenseMode) "\u001B[32mActivated\u001B[0m" else "\u001B[31mDeactivated\u001B[0m"
 
 
-           }
-        if (menu2 != 4) {
-            gameRound(ship)
+
+                    print("Actions:\n  Use Items    [1]\n  DefensiveMode[2] $defenseModeStatus\n  AttackMode   [3]    $attackModeStatus\n  Back[4]\nChoose: ")
+                    try {
+
+                        var menu2 = readln().toInt() // Nur Zahlen
+                        when (menu2) {
+                            1 -> {
+                                itemsMenu(itemList)
+                            }
+
+                            2 -> {
+                                if (!defenseMode) {
+                                    Thread.sleep(400)
+                                    println("Defensive Mode activated.")
+                                    Thread.sleep(400)
+                                    println("Attackmode deactivated.")
+                                    Thread.sleep(600)
+                                    ship[shipNumber - 1].defense = true
+
+                                } else {
+                                    Thread.sleep(600)
+                                    println("Defense mode is already activated.")
+                                    Thread.sleep(600)
+
+                                }
+                                Thread.sleep(600)
+
+                            }
+
+                            3 -> {
+                                if (defenseMode) {
+                                    Thread.sleep(600)
+                                    println("Attackmode activated.")
+                                    Thread.sleep(600)
+                                    println("Defensive deactivated.")
+                                    Thread.sleep(1000)
+                                    ship[shipNumber - 1].defense = false
+
+                                } else {
+                                    Thread.sleep(600)
+                                    println("Attack mode is already activated.")
+                                    Thread.sleep(600)
+
+                                }
+                                Thread.sleep(600)
+
+                            }
+
+                            4 -> {
+                                Thread.sleep(600)
+                                gameRound(patrols)
+                            }
+
+
+                        }
+                        richtigeEingabe = true
+                    } catch (e: NumberFormatException) {
+                        println("Type in the right number.")
+                    }
+                }
+
+                4 -> {
+
+                    afterGameRound()
+                    richtigeEingabe = true
+
+                }
+                else -> {
+                    println("Type in the right number.")
+                }
+            }
+        } catch (e: NumberFormatException) {
+            println("Type in the right number.")
         }
-
-       }
-
-       4 ->   {
-
-        afterGameRound()
-
-       }
     }
-
 }
 
 
