@@ -148,11 +148,13 @@ fun menu1(ship: MutableList<PatrolShip>) {
                                     println("Attackmode deactivated.")
                                     Thread.sleep(600)
                                     ship[shipNumber - 1].defense = true
+                                    gameRound(patrols)
 
                                 } else {
                                     Thread.sleep(600)
                                     println("Defense mode is already activated.")
                                     Thread.sleep(600)
+                                    gameRound(patrols)
 
                                 }
                                 Thread.sleep(600)
@@ -167,11 +169,13 @@ fun menu1(ship: MutableList<PatrolShip>) {
                                     println("Defensive deactivated.")
                                     Thread.sleep(1000)
                                     ship[shipNumber - 1].defense = false
+                                    gameRound(patrols)
 
                                 } else {
                                     Thread.sleep(600)
                                     println("Attack mode is already activated.")
                                     Thread.sleep(600)
+                                    gameRound(patrols)
 
                                 }
                                 Thread.sleep(600)
