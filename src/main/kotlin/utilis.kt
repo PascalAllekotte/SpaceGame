@@ -345,21 +345,32 @@ fun angriffsZielWählen(){
             println("Attack with:\n     [1] All ship/s\n${attackModeShips(patrols)}")
             print("Choose: ")
             var auswahl2 = readln().toInt()
-            if (auswahl2 == 1){
+            if (auswahl2 == 1) {
                 move2()
-                attackAllEnemies(patrols, enemies, auswahl-1)
+                attackAllEnemies(patrols, enemies, auswahl - 1)
 
+            } else {
+                val attackShips = attackModeShips(patrols)
+                if (auswahl2 in 2..attackShips.count() + 1) {
+                    move2()
+                    val angreiferSchiff = (auswahl2 in 2..attackShips.count() + 1)
+                    println("angreiferSchiffname")
+                    // nur für den effect nach bestätigung noch nicht codiert
 
-
-            // nur für den effect nach bestätigung noch nicht codiert
-
+                } else {
+                    println("Wrong input.")
+                }
             }
-
         }
-
+        else -> {
+            println("Wrong input.")
+        }
     }
-
 }
+
+
+
+
 fun attackModeShips(patrols: MutableList<PatrolShip>): String{
     val attackModeShips = patrols.filter { !it.defense }
     return attackModeShips.mapIndexed { index, ship -> "     [${index + 2}] ${ship.name}" }.joinToString("\n")
@@ -399,19 +410,25 @@ fun überprüfeObZerstört(patrols: MutableList<PatrolShip>, auswahl: Int): Bool
     }
 }
 
-fun spawnEnemys (enemies: MutableList<Enemy>){
-    if (totalHPenemies(enemies) <= 0){
+fun spawnEnemys (enemies: MutableList<Enemy>, gegnerGruppe: Int){
+    if (enemies.isEmpty() && gegnerGruppe == 1){
         enemies.add(
-            Enemy("SilverAlien", 250.0, 75.0, false, false, false, 2, 0.0)
+            Enemy("SilverAlien", 50.0, 75.0, false, false, false, 2, 0.0, false)
         )
         enemies.add(
-            Enemy("BadAlien", 230.0, 55.0, false, false, false, 2, 0.0)
+            Enemy("BadAlien", 30.0, 55.0, false, false, false, 2, 0.0, false)
         )
         enemies.add(
-            Enemy("Baddy", 240.0, 85.0, false, false, false, 2, 0.0)
+            Enemy("Baddy", 40.0, 85.0, false, false, false, 2, 0.0, false)
         )
 
+    } else if (gegnerGruppe == 2 && enemies.isEmpty()){
+        enemies.add(
+            Enemy("SILVER BOSS", 2050.0, 115.0, false, false, false, 3, 0.0, true)
+        )
     }
+
+
 
 }
 
@@ -440,12 +457,20 @@ fun levelUP (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>){
 
 
  */
-//---------------------Attacken
-fun gegnerAngriff1() {
+//---------------------Attacken vom Gegner-----
+fun normalerAngriffdesGegners() {
     val enemiesListe = enemies.filter { !it.destroyed }.shuffled()
     for (enemy in enemiesListe) {
         if (!enemy.destroyed){
             enemy.normalAttack(patrols)}
+
+    }
+}
+fun laserAngriffdesGegners() {
+    val enemiesListe = enemies.filter { !it.destroyed }.shuffled()
+    for (enemy in enemiesListe) {
+        if (!enemy.destroyed){
+            enemy.laserAttack(patrols)}
         break
     }
 }

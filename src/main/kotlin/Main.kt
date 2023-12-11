@@ -6,18 +6,19 @@ val itemList = mutableListOf<Items>(
 )
 var round = 1
 var coins = 0
+var gegnerGruppe = 0
 
 var patrols = mutableListOf(
-    PatrolShip("Galactic Reaper", 1000.0, 55.0, false, false, false,1, 0.0),
-    PatrolShip("Nebular Shooter", 920.0, 80.0, false,  false, false,1, 0.0),
-    PatrolShip("Cosmic Cargo",    1250.0, 50.0, false,  false, false,1, 00.0)
+    PatrolShip("Galactic Reaper", 700.0, 55.0, false, false, false,1, 0.0),
+    PatrolShip("Nebular Shooter", 620.0, 80.0, false,  false, false,1, 0.0),
+    PatrolShip("Cosmic Cargo",    1000.0, 50.0, false,  false, false,1, 00.0)
 )
 
 
 
 val enemies =  mutableListOf(
-    Enemy("BlueAlien", 250.0, 57.0, false, false, false, 2, 0.0),
-    Enemy("GreenAlien", 250.0, 62.0, false, false, false, 2, 0.0)
+    Enemy("BlueAlien", 10.0, 57.0, false, false, false, 2, 0.0, false),
+    Enemy("GreenAlien", 50.0, 62.0, false, false, false, 2, 0.0, false)
 )
 
 
@@ -43,6 +44,13 @@ fun main() {
 
 
         while (alive) {
+            if (enemies.isEmpty()){
+                gegnerGruppe++
+                println("                                      ______________LEVEL UP: "+ ("\u001B[32m${patrols[0].level}\u001B[0m") + " _____________")
+
+            }
+
+            spawnEnemys(enemies, gegnerGruppe)
 
             if (round == 1){
                 print("")
@@ -59,9 +67,10 @@ fun main() {
 
 //AB hier macht der Gegner seinen move
            move3()
-            gegnerAngriff1() // KEIN FEHLER
+            laserAngriffdesGegners()
+            normalerAngriffdesGegners() // KEIN FEHLER
             // patrols.forEach { it.zerstört(patrols)}
-            attackAllShips(patrols, 200.0) // Gegner attackiert alle Schiffe
+            // attackAllShips(patrols, 200.0) // Gegner attackiert alle Schiffe Boss
             //patrols.forEach { it.zerstört(patrols)}
 
             println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
@@ -88,14 +97,19 @@ fun main() {
                           // fehler isempty durch health <= 0 austasuchen
             zerstörtAusListeLöschenPatrol(patrols)
             zerstörtAusListeLöschenEnemy(enemies)
-            levelUP(enemies, patrols) //
-            spawnEnemys(enemies)
+            levelUP(enemies, patrols) // noch anzeigen lassen
+
+
+
+
+
         }
         println("Game Over")
 
     }
 
 fun zerstörtAusListeLöschenEnemy(list: MutableList<Enemy>) {
+
     list.removeIf { enemy -> enemy.health <= 0 }
 }
 fun zerstörtAusListeLöschenPatrol(list: MutableList<PatrolShip>) {

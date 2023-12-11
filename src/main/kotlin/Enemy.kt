@@ -4,7 +4,7 @@ import enemies
 import patrols
 
 
-class Enemy(name: String, health: Double, attack: Double, defense: Boolean, destroyed: Boolean, enemy: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, true,false) {
+class Enemy(name: String, health: Double, attack: Double, defense: Boolean, destroyed: Boolean, enemy: Boolean, level: Int, armor: Double, boss: Boolean) : Ship(name, health, attack, false, true,false) {
 
     val name = name
     var health = health
@@ -13,6 +13,7 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
     var defense = defense
     var destroyed = false
     var level = level
+    var boss = Boolean
 
     private var maxHealth: Double = health
     private var maxAttack: Double = attack
@@ -37,9 +38,25 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
             } else {
                 patrols[zufallsGenerator].health -= damage
             }
-            println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of [$damage]!")
+            println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of " + "\u001B[31m[$damage]\u001B[0m")
 
     }
+    fun laserAttack(patrol: MutableList<PatrolShip>) {
+
+        val zufallsGenerator = (0 until patrols.size).random()
+        val ziel = patrols[zufallsGenerator]
+
+
+        val damage = attack * 2
+        var defenseDamge = if (patrols[zufallsGenerator].defense) {
+            patrols[zufallsGenerator].health -= damage - damage * 0.82
+        } else {
+            patrols[zufallsGenerator].health -= damage
+        }
+        println(" ${name} attacks ${patrols[zufallsGenerator].name} with a laserbeam " + "\u001B[31m[$damage]\u001B[0m")
+
+    }
+
 
 
 
