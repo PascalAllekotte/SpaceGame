@@ -493,10 +493,12 @@ var lebtNoch = false
     //println("\n  After attack")
 }
 fun spezialAngriffBoss(enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>) {
-    for (enemy in enemies) {
-        enemy.specialAttackBoss(patrols, true)
+
+        for (enemy in enemies) {
+            enemy.specialAttackBoss(patrols, false )
+        }
     }
-}
+
 
 //-------------angriff der gesamten patrols
 fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<Enemy>, auswahl: Int) {
