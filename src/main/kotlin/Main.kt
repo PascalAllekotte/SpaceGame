@@ -16,8 +16,8 @@ var patrols = mutableListOf(
 
 
 val enemies =  mutableListOf(
-    Enemy("BlueAlien", 200.0, 55.0, false, false, false, 2, 0.0),
-    Enemy("GreenAlien", 200.0, 55.0, false, false, false, 2, 0.0)
+    Enemy("BlueAlien", 250.0, 57.0, false, false, false, 2, 0.0),
+    Enemy("GreenAlien", 250.0, 62.0, false, false, false, 2, 0.0)
 )
 
 
@@ -58,12 +58,13 @@ fun main() {
             zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
 
 //AB hier macht der Gegner seinen move
-            move3()
-            // gegnerAngriff1() // KEIN FEHLER
+           move3()
+            gegnerAngriff1() // KEIN FEHLER
             // patrols.forEach { it.zerstört(patrols)}
-            // attackAllShips(patrols, 370.0) // Gegner attackiert alle Schiffe
+            attackAllShips(patrols, 200.0) // Gegner attackiert alle Schiffe
             //patrols.forEach { it.zerstört(patrols)}
 
+            println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 
             print("Press Enter for next Round")
             readln().toIntOrNull()
