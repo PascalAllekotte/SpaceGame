@@ -105,7 +105,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
     var richtigeEingabe = false
     while (!richtigeEingabe) {
 
-        print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ")
+        print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ") // bug wenn ein patrol schiff zerstört ist muss hier auch noch gelöscht werden
         try {
             var shipNumber = readln().toInt()
             println("                                                ¯¯¯")
@@ -192,7 +192,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
                         }
                         richtigeEingabe = true
                     } catch (e: NumberFormatException) {
-                        println("Type in the right number.")
+                        println("Wrong input!")
                     }
                 }
 
@@ -203,11 +203,11 @@ fun menu1(ship: MutableList<PatrolShip>) {
 
                 }
                 else -> {
-                    println("Type in the right number.")
+                    println("Wrong input!")
                 }
             }
         } catch (e: NumberFormatException) {
-            println("Type in the right number.")
+            println("Wrong input!")
         }
     }
 }
@@ -217,7 +217,6 @@ fun menu1(ship: MutableList<PatrolShip>) {
 fun move2(){
     if (!überprüfeAufvollDefensive(patrols))
     Thread.sleep(500)
-    println("_____________________________________")
     println("\nAttacking Enemy...")
     Thread.sleep(400)
     println("=> =>")
@@ -253,12 +252,6 @@ fun move3(){
 }
 
 
-
-fun attack2() {
-    for (enemy in enemies) {
-        enemy.normalAttack(patrols)
-    }
-}
 //_______________Spielverlauf nach GameRound_____________________________________________________________________
 fun afterGameRound (){
     println("Decide now\n  Attack/Defense [1]\n  Back to Ships  [2]")
@@ -386,6 +379,8 @@ fun normalerAngriffPatrol(schiffName: String) {
     }
 }
 
+
+
 fun bereitsAngegriffenZurücksetzten() {
     patrols.forEach { it.bereitsAngegriffen = false }
 }
@@ -496,6 +491,11 @@ var lebtNoch = false
         println(" ${enemies[0].name} attack Galactic Patrol.. Damage: [$damage]")
     }
     //println("\n  After attack")
+}
+fun spezialAngriffBoss(enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>) {
+    for (enemy in enemies) {
+        enemy.specialAttackBoss(patrols, true)
+    }
 }
 
 //-------------angriff der gesamten patrols

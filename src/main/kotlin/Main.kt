@@ -67,6 +67,9 @@ fun main() {
 
 //AB hier macht der Gegner seinen move
            move3()
+            if (round % 3 == 0){ // jede 3te runde wird die attacke vom boss ausgeführt die den gegner halbe Attacke gibt
+                spezialAngriffBoss(enemies, patrols)
+            }
             laserAngriffdesGegners()
             normalerAngriffdesGegners() // KEIN FEHLER
             // patrols.forEach { it.zerstört(patrols)}
