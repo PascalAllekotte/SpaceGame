@@ -1,13 +1,11 @@
-open class Items(name: String, armor: Double, health: Double, coins: Int) {
+import Patrol.PatrolShip
 
-    val items = mutableListOf(null)
-
-    val name = name
-    var armor = armor
+class Items(
+    name: String,
+    armor: Double,
+    health: Double,
+    coins: Int
+) : PatrolShip(name, health, 0.0, true, false, false, 0, armor) {
+    // Hier kommt der zusätzliche Code für die Items-Klasse
     var coins = coins
-
-    //shield 100% defensive 2 rounds
-    //levelup
-    //armor
-    //health
 }

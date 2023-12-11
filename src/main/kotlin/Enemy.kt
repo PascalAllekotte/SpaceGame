@@ -12,36 +12,17 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
     var armor = armor
     var defense = defense
     var destroyed = false
+    var level = level
 
     private var maxHealth: Double = health
     private var maxAttack: Double = attack
 
-    var level: Int = level
-        set(value) {
-            field = value
-            updateStats()
-        }
 
-    init {
 
-        updateStats()
-    }
 
-    private fun updateStats() {
-        val hpErhöhen = maxHealth * 0.3
-        val attackErhöhen = maxAttack * 0.2
 
-        maxHealth = maxHealth + hpErhöhen
-        maxAttack = maxAttack + attackErhöhen
 
-        health = maxHealth
-        attack = maxAttack
 
-        fun levelAufstieg() {
-            val healthAnstieg = health * 0.2
-            val attackAnstieg = health * 0.2
-        }
-    }
 
 
     fun normalAttack(patrol: MutableList<PatrolShip>) {
@@ -49,8 +30,8 @@ class Enemy(name: String, health: Double, attack: Double, defense: Boolean, dest
             val zufallsGenerator = (0 until patrols.size).random()
             val ziel = patrols[zufallsGenerator]
 
-            val level = patrols[zufallsGenerator].level
-            val damage = level * 80.0
+
+            val damage = attack
             var defenseDamge = if (patrols[zufallsGenerator].defense) {
                 patrols[zufallsGenerator].health -= damage - damage * 0.82
             } else {

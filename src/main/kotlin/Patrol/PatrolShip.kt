@@ -2,7 +2,7 @@ package Patrol
 
 import enemies
 
-class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, destroyed: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, false, false) {
+open class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, destroyed: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, false, false) {
 
     var destroyed = destroyed
     val name = name

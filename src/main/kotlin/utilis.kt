@@ -85,6 +85,7 @@ fun bag(liste: MutableList<Items>) {
 
     if (liste.isEmpty()) {
         println("|           No item in storage.          |")
+
     } else {
         for (item in liste) {
             println("Item: [${item}], Power: [${item}]")
@@ -107,7 +108,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
         print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ")
         try {
             var shipNumber = readln().toInt()
-            println("                                                 ¯¯¯")
+            println("                                                ¯¯¯")
 
 
             when (shipNumber) {
@@ -240,11 +241,11 @@ fun move3(){
         println("<= <=")
         Thread.sleep(200)
         println("<=     <=")
-    gegnerAngriff1()
+        //gegnerAngriff1()
         Thread.sleep(100)
         println("   <= <=")
         Thread.sleep(200)
-    attackAllShips(patrols, 370.0)
+    //attackAllShips(patrols, 200.0)
     println("  <=         <=\n \n \n")
     Thread.sleep(700)}
     patrols.forEach { it.zerstört(patrols)}
@@ -280,6 +281,7 @@ fun afterGameRound (){
     fun itemsMenu (liste: MutableList<Items>){
         if (liste.isEmpty() && coins <= 0){
             println("No Coins/Items in Storage")
+            gameRound(patrols)
         } else if (coins >= 0 && liste.isEmpty()){
             println("\n No items in storage!\n=>Show store?")
             println("   Yes [1]\n   No  [2]")
@@ -317,6 +319,7 @@ fun storeListe() {
         println("[${index + 1}] ${item.name}".padEnd(25) + "[${index + halfSize + 1}] ${secondBlock[index].name}")
     }
     println("\n")
+    gameRound(patrols)
 }
 
 
@@ -338,7 +341,7 @@ fun angriffsZielWählen(){
     print("Decide: ")
     var auswahl = readln().toInt()
     when (auswahl){
-        1,2 -> {
+        in 1..enemies.size -> { // wählt 1 - index der enemies liste
             println("Attack with:\n     [1] All ship/s\n${attackModeShips(patrols)}")
             print("Choose: ")
             var auswahl2 = readln().toInt()
@@ -399,13 +402,13 @@ fun überprüfeObZerstört(patrols: MutableList<PatrolShip>, auswahl: Int): Bool
 fun spawnEnemys (enemies: MutableList<Enemy>){
     if (totalHPenemies(enemies) <= 0){
         enemies.add(
-            Enemy("SilverAlien", 240.0, 55.0, false, false, false, 2, 0.0)
+            Enemy("SilverAlien", 250.0, 75.0, false, false, false, 2, 0.0)
         )
         enemies.add(
             Enemy("BadAlien", 230.0, 55.0, false, false, false, 2, 0.0)
         )
         enemies.add(
-            Enemy("Baddy", 240.0, 55.0, false, false, false, 2, 0.0)
+            Enemy("Baddy", 240.0, 85.0, false, false, false, 2, 0.0)
         )
 
     }
@@ -449,22 +452,20 @@ fun gegnerAngriff1() {
 
 //-------------Angriff des gegners Auf alle Patrols
 fun attackAllShips(patrolShip: MutableList<PatrolShip>, damage: Double){
-var printen = false
-    if (enemies[0].health <= 0){
-        enemies[0].destroyed = true
-    }
-    for (ship in patrolShip){
+var lebtNoch = false
+    if (enemies.isNotEmpty() && !enemies[0].destroyed){
+    for (ship in patrolShip) {
         if (!enemies[0].destroyed) {
-            printen = true
+            lebtNoch = true
             var defenseDamge = if (ship.defense) {
                 ship.health -= damage - damage * 0.86
             } else {
                 ship.health -= damage
             }
         }
-
     }
-    if (printen){
+    }
+    if (lebtNoch){
         println(" ${enemies[0].name} attack Galactic Patrol.. Damage: [$damage]")
     }
     //println("\n  After attack")
