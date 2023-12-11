@@ -9,14 +9,14 @@ var coins = 0
 var gegnerGruppe = 0
 
 var patrols = mutableListOf(
-    PatrolShip("Galactic Reaper", 700.0, 55.0, false, false, false,1, 0.0),
-    PatrolShip("Nebular Shooter", 620.0, 80.0, false,  false, false,1, 0.0),
-    PatrolShip("Cosmic Cargo",    1000.0, 50.0, false,  false, false,1, 00.0)
+    PatrolShip("Galactic Reaper", 700.0, 55.0, false, false, false,1, 0.0, false),
+    PatrolShip("Nebular Shooter", 620.0, 80.0, false,  false, false,1, 0.0, false),
+    PatrolShip("Cosmic Cargo",    1000.0, 50.0, false,  false, false,1, 00.0, false)
 )
 
 
 
-val enemies =  mutableListOf(
+var enemies =  mutableListOf(
     Enemy("BlueAlien", 10.0, 57.0, false, false, false, 2, 0.0, false),
     Enemy("GreenAlien", 50.0, 62.0, false, false, false, 2, 0.0, false)
 )
@@ -62,7 +62,7 @@ fun main() {
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
-            enemies.forEach { it.zerstört(enemies)} // Printed wenn eins zerstört wurde vom gegner
+            // Printed wenn eins zerstört wurde vom gegner
             zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
 
 //AB hier macht der Gegner seinen move
@@ -72,9 +72,8 @@ fun main() {
             // patrols.forEach { it.zerstört(patrols)}
             // attackAllShips(patrols, 200.0) // Gegner attackiert alle Schiffe Boss
             //patrols.forEach { it.zerstört(patrols)}
-
+            zerstörtAusListeLöschenPatrol(patrols)
             println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
-
             print("Press Enter for next Round")
             readln().toIntOrNull()
             //attack2()
@@ -97,6 +96,7 @@ fun main() {
                           // fehler isempty durch health <= 0 austasuchen
             zerstörtAusListeLöschenPatrol(patrols)
             zerstörtAusListeLöschenEnemy(enemies)
+            bereitsAngegriffenZurücksetzten()
             levelUP(enemies, patrols) // noch anzeigen lassen
 
 

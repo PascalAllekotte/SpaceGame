@@ -350,13 +350,20 @@ fun angriffsZielWählen(){
                 attackAllEnemies(patrols, enemies, auswahl - 1)
 
             } else {
+                val schiffe = attackModeShipsListe(patrols)
                 val attackShips = attackModeShips(patrols)
+
                 if (auswahl2 in 2..attackShips.count() + 1) {
                     move2()
-                    val angreiferSchiff = (auswahl2 in 2..attackShips.count() + 1)
-                    println("angreiferSchiffname")
+                    //println("Youre attacking with ${schiffe[auswahl2 - 2].name} ")
+                    var schiffWasAngreift = schiffe[auswahl2 - 2].name
+                        normalerAngriffPatrol(schiffWasAngreift)
+                    zerstörtAusListeLöschenEnemy(enemies) //tets
                     // nur für den effect nach bestätigung noch nicht codiert
-
+                    enemies.forEach { it.zerstört(enemies)}
+                if (!enemies.isEmpty()) {
+                    angriffZiele()//test
+                }
                 } else {
                     println("Wrong input.")
                 }
@@ -368,11 +375,35 @@ fun angriffsZielWählen(){
     }
 }
 
+fun normalerAngriffPatrol(schiffName: String) {
+    val patrolsListe = patrols.filter { !it.destroyed }.shuffled()
+    for (patrol in patrolsListe) {
+        if (!patrol.destroyed && patrol.name == schiffName) {
+            patrol.normalAttackPatrol(enemies, 0)
+            patrol.bereitsAngegriffen = true
+            break
+        }
+    }
+}
 
+fun bereitsAngegriffenZurücksetzten() {
+    patrols.forEach { it.bereitsAngegriffen = false }
+}
 
+fun attackModeShipsListe(patrols: MutableList<PatrolShip>): List<PatrolShip> {
+    val attackShips = mutableListOf<PatrolShip>()
+
+    for (ship in patrols) {
+        if (!ship.defense) {
+            attackShips.add(ship)
+        }
+    }
+
+    return attackShips
+}
 
 fun attackModeShips(patrols: MutableList<PatrolShip>): String{
-    val attackModeShips = patrols.filter { !it.defense }
+    val attackModeShips = patrols.filter { !it.defense && !it.bereitsAngegriffen}
     return attackModeShips.mapIndexed { index, ship -> "     [${index + 2}] ${ship.name}" }.joinToString("\n")
 }
 
@@ -390,24 +421,6 @@ fun listEnemyNames(enemys: MutableList<Enemy>) {
 //--------Defensive-----= Kein Angriff
 fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
     return patrols.all { it.defense }
-}
-
-//-------Patrolship Zerstört true or false
-fun überprüfeObZerstörtPatrol(patrols: MutableList<PatrolShip>, auswahl: Int): Boolean{
-    if (auswahl in patrols.indices){
-        return patrols[auswahl].destroyed
-    } else {
-        return false
-    }
-}
-
-//-------Enemy Zerstört true or false
-fun überprüfeObZerstört(patrols: MutableList<PatrolShip>, auswahl: Int): Boolean{
-    if (auswahl in patrols.indices){
-        return patrols[auswahl].destroyed
-    } else {
-        return false
-    }
 }
 
 fun spawnEnemys (enemies: MutableList<Enemy>, gegnerGruppe: Int){
@@ -443,20 +456,7 @@ fun levelUP (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>){
 
 
 
-//--------AtackierModus= Schiffe anzeigen
 
-
-
-/*
-
-    Defensemodus Atacke rezuzieren
-      var defenseDamge = if (ship.defense){
-            ship.health -= damage - damage * 0.86
-
- auf eine nachkommastelle runden "%.1f".format
-
-
- */
 //---------------------Attacken vom Gegner-----
 fun normalerAngriffdesGegners() {
     val enemiesListe = enemies.filter { !it.destroyed }.shuffled()
@@ -466,6 +466,8 @@ fun normalerAngriffdesGegners() {
 
     }
 }
+
+
 fun laserAngriffdesGegners() {
     val enemiesListe = enemies.filter { !it.destroyed }.shuffled()
     for (enemy in enemiesListe) {
@@ -512,5 +514,6 @@ fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<
         enemies[auswahl].destroyed = true
     }
 }
+
 
 //println("\n  After attack")

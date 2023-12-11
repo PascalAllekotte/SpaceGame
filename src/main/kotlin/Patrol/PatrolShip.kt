@@ -2,7 +2,7 @@ package Patrol
 
 import enemies
 
-open class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, destroyed: Boolean, level: Int, armor: Double) : Ship(name, health, attack, false, false, false) {
+open class PatrolShip (name: String, health: Double, attack: Double, defense: Boolean, enemy: Boolean, destroyed: Boolean, level: Int, armor: Double, bereitsAngegriffen: Boolean) : Ship(name, health, attack, false, false, false) {
 
     var destroyed = destroyed
     val name = name
@@ -10,6 +10,7 @@ open class PatrolShip (name: String, health: Double, attack: Double, defense: Bo
     var attack = attack
     var armor = armor
     var defense = defense
+    var bereitsAngegriffen = false
 
     private var maxHealth: Double = health
     private var maxAttack: Double = attack
@@ -24,6 +25,7 @@ open class PatrolShip (name: String, health: Double, attack: Double, defense: Bo
 
         updateStats()
     }
+
 
     private fun updateStats() {
         val hpErhöhen = maxHealth * 0.2
@@ -48,23 +50,21 @@ open class PatrolShip (name: String, health: Double, attack: Double, defense: Bo
             }
         }
 
-    fun zerstörtAusListeLöschenPatrol(list: MutableList<PatrolShip>) {
-        if (health <= 0) {
-            list.remove(this)
-        }
-    }
+    open fun normalAttackPatrol(enemies: MutableList<Enemy>, auswahl: Int) {
+        if (auswahl in enemies.indices) {
+            val target = enemies[auswahl]
 
-    fun normalAttack (patrol: MutableList<Enemy>) {
-        val zufallsGenerator = (0 until enemies.size).random()
-        val ziel = enemies[zufallsGenerator]
-
-        val level = enemies[zufallsGenerator].level
-        val damage = level * 80.0
-        var defenseDamge = if (enemies[zufallsGenerator].defense) {
-            enemies[zufallsGenerator].health -= damage - damage * 0.82
+            val damage = attack
+            val defenseDamage = if (target.defense) {
+                target.health -= damage - damage * 0.82
+            } else {
+                target.health -= damage
+            }
+            println("$name attacks ${target.name} \u001B[31m[$damage]\u001B[0m")
         } else {
-            enemies[zufallsGenerator].health -= damage
+            println("Invalid target selection.")
         }
-        println(" ${name} attacks ${enemies[zufallsGenerator].name} with a damage of [$damage]!")
     }
+
+
 }
