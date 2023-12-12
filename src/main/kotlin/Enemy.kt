@@ -64,6 +64,10 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
         if (runden % 3 == 0){
             enemies.forEach { it.defense = true }
             println("Boss turns defensive mode.")
+            println("Boss spawns a ship!")
+            enemies.add(
+                Enemy("Undercover", 50.0, 75.0, false, false, false, 2, 0.0, false))
+
         } else {
             enemies.forEach { it.defense = false }
         }
