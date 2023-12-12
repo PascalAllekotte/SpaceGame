@@ -291,7 +291,8 @@ fun afterGameRound (){
                 }
 
                 2 -> {
-                    return
+
+                    gameRound(patrols)
 
                 }
             }
