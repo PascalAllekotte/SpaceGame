@@ -64,18 +64,18 @@ fun main() {
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             // Printed wenn eins zerstört wurde vom gegner
             zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
-
+            enemies.forEach { it.zerstört(enemies)}
 //AB hier macht der Gegner seinen move
            move3()
-            if (round % 3 == 0){ // jede 3te runde wird die attacke vom boss ausgeführt die den gegner halbe Attacke gibt
-                spezialAngriffBoss(enemies, patrols)
-            }
+            spezialAngriffBoss(enemies, patrols)
+
             laserAngriffdesGegners()
             normalerAngriffdesGegners() // KEIN FEHLER
             // patrols.forEach { it.zerstört(patrols)}
             // attackAllShips(patrols, 200.0) // Gegner attackiert alle Schiffe Boss
             //patrols.forEach { it.zerstört(patrols)}
-            zerstörtAusListeLöschenPatrol(patrols)
+            zerstörtAusListeLöschenPatrol(patrols) // klappt
+            special2(enemies) // klappt
             println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
             print("Press Enter for next Round")
             readln().toIntOrNull()
@@ -101,7 +101,6 @@ fun main() {
             zerstörtAusListeLöschenEnemy(enemies)
             bereitsAngegriffenZurücksetzten()
             levelUP(enemies, patrols) // noch anzeigen lassen
-
 
 
 

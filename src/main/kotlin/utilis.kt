@@ -354,7 +354,7 @@ fun angriffsZielWählen(){
                         normalerAngriffPatrol(schiffWasAngreift)
                     zerstörtAusListeLöschenEnemy(enemies) //tets
                     // nur für den effect nach bestätigung noch nicht codiert
-                    enemies.forEach { it.zerstört(enemies)}
+
                 if (!enemies.isEmpty()) {
                     angriffZiele()//test
                 }
@@ -464,8 +464,18 @@ fun normalerAngriffdesGegners() {
 }
 
 
+fun special2(enemies: MutableList<Enemy>) {
+    val enemiesListe = enemies.filter { !it.destroyed }
+    for (enemy in enemiesListe) {
+        if (!enemy.destroyed && enemy.isBoss) {
+            enemy.specialAttackeBoss2()
+            break
+        }
+    }
+}
+
 fun laserAngriffdesGegners() {
-    val enemiesListe = enemies.filter { !it.destroyed }.shuffled()
+    val enemiesListe = enemies.filter { !it.destroyed && it.isBoss}.shuffled()
     for (enemy in enemiesListe) {
         if (!enemy.destroyed){
             enemy.laserAttack(patrols)}
