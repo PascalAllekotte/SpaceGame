@@ -5,6 +5,7 @@ open class Items(
     name: String,
     armor: Double,
     health: Double,
+    attack: Double,
     val coinsPrice: Int
 ) : PatrolShip(name, health, 0.0, true, false, false, 0, armor, false) {
 

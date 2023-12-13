@@ -24,12 +24,12 @@ var enemies =  mutableListOf(
 
 
 val storeItems =  mutableListOf(
-    Items("Armor    +250", 250.0, 250.0, 100),
-    Items("Armor    +500", 500.0, 500.0, 180),
-    Items("PatrolHP +250", 250.0, 250.0, 200),
-    Items("Max HP   +250", 250.0, 250.0, 120),
-    Items("Repair Ship  ", 250.0, 250.0, 200),
-    Items("Repair Crew  ", 250.0, 250.0, 400)
+    Items("Armor    +250", 250.0, 250.0,0.0, 100),
+    Items("Armor    +500", 500.0, 500.0,0.0, 180),
+    Items("PatrolHP +250", 250.0, 250.0,0.0, 200),
+    Items("Max HP   +250", 250.0, 250.0,0.0, 120),
+    Items("Repair Ship  ", 250.0, 250.0,0.0, 200),
+    Items("Repair Crew  ", 250.0, 250.0,0.0, 400)
 
 )
 
