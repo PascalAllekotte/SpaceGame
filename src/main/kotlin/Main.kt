@@ -17,8 +17,8 @@ var patrols = mutableListOf(
 
 
 var enemies =  mutableListOf(
-    Enemy("BlueAlien", 10.0, 57.0, false, false, false, 2, 0.0, false),
-    Enemy("GreenAlien", 50.0, 62.0, false, false, false, 2, 0.0, false)
+    Enemy("BlueAlien", 170.0, 57.0, false, false, false, 2, 0.0, false),
+    Enemy("GreenAlien", 170.0, 62.0, false, false, false, 2, 0.0, false)
 )
 
 

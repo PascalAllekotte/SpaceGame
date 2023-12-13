@@ -4,9 +4,9 @@ import Patrol.PatrolShip
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
     val patrolHP = ships.sumOf { it.health }
-    val health = "\u001B[31m${(patrolHP)}\u001B[0m"
+    val health = "\u001B[31m${"%.1f".format(patrolHP)}\u001B[0m"
     val coin = "\u001B[38;5;208m$coins\u001B[0m"
-    return "       Galactic Patrol has a total HP of: ${"%.1f".format(health)} | Coins: $coin"
+    return "       Galactic Patrol has a total HP of: ${health} | Coins: $coin"
 }
 
 
