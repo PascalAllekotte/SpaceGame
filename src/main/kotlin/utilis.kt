@@ -6,7 +6,7 @@ fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
     val patrolHP = ships.sumOf { it.health }
     val health = "\u001B[31m${(patrolHP)}\u001B[0m"
     val coin = "\u001B[38;5;208m$coins\u001B[0m"
-    return "       Galactic Patrol has a total HP of: $health | Coins: $coin"
+    return "       Galactic Patrol has a total HP of: ${"%.1f".format(health)} | Coins: $coin"
 }
 
 
@@ -48,15 +48,15 @@ fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
     println("__________Stats of your ships:__________    Round: $round    __________")
     for (ship in patrols) {
         val name = "\u001B[1m\u001B[4m${ship.name}\u001B[0m"
-        val healthColor = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
-        val attackColor = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
-        val armorColor = "\u001B[33m${"%.1f".format(ship.armor)}\u001B[0m"
-        val levelColor = "\u001B[32m${ship.level}\u001B[0m"
+        val health = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
+        val attack = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
+        val armor = "\u001B[33m${"%.1f".format(ship.armor)}\u001B[0m"
+        val level = "\u001B[32m${ship.level}\u001B[0m"
         // val defenseColor = "\u001B[38;5;220m${ship.defense}\u001B[0m" // Ship Name in gelblich-goldener Farbe
         val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
 
 
-        println("Ship: [${name}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus]")
+        println("Ship: [${name}], HP: [$health], Attack: [$attack], Armor: [$armor], Level: [$level], Modus: [$defenseModeStatus]")
     }
 }
 
