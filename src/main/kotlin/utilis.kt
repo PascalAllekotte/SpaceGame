@@ -4,9 +4,9 @@ import Patrol.PatrolShip
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
     val patrolHP = ships.sumOf { it.health }
-    val healthColor = "\u001B[31m${(patrolHP)}\u001B[0m"
-    val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
-    return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
+    val health = "\u001B[31m${(patrolHP)}\u001B[0m"
+    val coin = "\u001B[38;5;208m$coins\u001B[0m"
+    return "       Galactic Patrol has a total HP of: $health | Coins: $coin"
 }
 
 
@@ -81,19 +81,18 @@ fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
 
 
 fun bag(itemList: MutableList<Items>, patrols: MutableList<PatrolShip>) {
-    println("__________Items in your storage:__________")
+    println("           __________Items in your storage:__________")
 
     if (itemList.isEmpty()) {
-        println("|           No item in storage.          |")
+        println("           |           No item in storage.          |")
 
     } else {
-        println("Item: ")
         for ((index, item) in itemList.withIndex()) {
-            println("[${index +1}] ${item.name}")
+            println("            [${index +1}] ${item.name}")
         }
 
     }
-        println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
+        println("           ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 }
 
 fun gameRound (ship: MutableList<PatrolShip>){
@@ -106,10 +105,10 @@ fun menu1(ship: MutableList<PatrolShip>) {
     var richtigeEingabe = false
     while (!richtigeEingabe) {
 
-        print("---Plan your next Step---\nChoose ship Ship[1] Ship[2] Ship[3] Continue[4]: ") // bug wenn ein patrol schiff zerstört ist muss hier auch noch gelöscht werden
+        print("---Plan your next Step---\nChoose ship: Ship[1] Ship[2] Ship[3] Continue[4]: ") // bug wenn ein patrol schiff zerstört ist muss hier auch noch gelöscht werden
         try {
             var shipNumber = readln().toInt()
-            println("                                                ¯¯¯")
+            println("                                                 ¯¯¯")
 
 
             when (shipNumber) {
@@ -302,11 +301,12 @@ fun afterGameRound (){
             println("Items in Storage:")
             for ((index, item) in liste.withIndex()) {
 
-                println("[${index +1}] ${item.name}")
+                println("   [${index +1}] ${item.name}")
             }
 
-            print("\nChoose an item or type '0' go back: ")
+            print("\n\u001B[4mChoose an item or type '0' go back\u001B[0m: ")
             val itemWahl = readLine()
+            Thread.sleep(600)
             if (itemWahl == "0") {
                 gameRound(patrols)
             } else {
@@ -436,7 +436,7 @@ fun listEnemyNames(enemys: MutableList<Enemy>) {
         println("   [$nummerierung]${enemy.name}")
         nummerierung++
     }
-    println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
+    println("  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 
 }
 
@@ -448,21 +448,33 @@ fun überprüfeAufvollDefensive(patrols: MutableList<PatrolShip>): Boolean{
 fun spawnEnemys (enemies: MutableList<Enemy>, gegnerGruppe: Int){
     if (enemies.isEmpty() && gegnerGruppe == 1){
         enemies.add(
-            Enemy("SilverAlien", 50.0, 75.0, false, false, false, 2, 0.0, false)
+            Enemy("Ufo", 50.0, 115.0, false, false, false, 2, 0.0, false)
         )
         enemies.add(
-            Enemy("BadAlien", 30.0, 55.0, false, false, false, 2, 0.0, false)
+            Enemy("BadAlien", 30.0, 85.0, false, false, false, 2, 0.0, false)
         )
         enemies.add(
-            Enemy("Baddy", 40.0, 85.0, false, false, false, 2, 0.0, false)
+            Enemy("Corona", 40.0, 95.0, false, false, false, 2, 0.0, false)
         )
-
     } else if (gegnerGruppe == 2 && enemies.isEmpty()){
         enemies.add(
-            Enemy("SILVER BOSS", 2050.0, 115.0, false, false, false, 3, 0.0, true)
+            Enemy("Blackbeard BOSS", 2050.0, 115.0, false, false, false, 3, 0.0, true)
+        )
+    }   else if (gegnerGruppe == 3 && enemies.isEmpty()) {
+        enemies.add(
+            Enemy("Kaido", 50.0, 75.0, false, false, false, 2, 0.0, false)
+        )
+        enemies.add(
+            Enemy("Clown", 30.0, 55.0, true, false, false, 2, 0.0, false)
+        )
+        enemies.add(
+            Enemy("Killer", 40.0, 85.0, false, false, false, 2, 0.0, false)
+        )
+    }else if (gegnerGruppe == 4 && enemies.isEmpty()) {
+        enemies.add(
+            Enemy("Predator BOSS", 3050.0, 180.0, true, false, false, 3, 0.0, true)
         )
     }
-
 
 
 }
@@ -478,12 +490,18 @@ fun levelUP (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>){
 
 fun dropItem (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>, itemList: MutableList<Items>){
     if (enemies.isEmpty() && patrols.all { it.level == 1 }){
-        val drop =  Items("PatrolHP +250", 250.0, 250.0, 0)
+        val drop =  Items("ShipHP +250", 250.0, 250.0, 0)
         val drop1 = Items("Armor    +250", 250.0, 0.0, 0)
         itemList.add(drop)
         itemList.add(drop1)
         println("+++Enemy group destroyed!+++")
         println("            \u001B[34m|===>Items dropped<===|\u001B[0m")
+    } else if (enemies.isEmpty() && patrols.all { it.level == 2 }){
+        val drop2 =  Items("ShipHP +380", 0.0, 380.0, 0)
+        val drop3 = Items("Armor    +370", 370.0, 0.0, 0)
+        itemList.add(drop2)
+        itemList.add(drop3)
+
     }
 
 }
@@ -532,13 +550,21 @@ var lebtNoch = false
                 ship.health -= damage
             }
         }
+      }
     }
-    }
+
     if (lebtNoch){
         println(" ${enemies[0].name} attack Galactic Patrol.. Damage: [$damage]")
     }
     //println("\n  After attack")
 }
+fun attackeBossAlle(enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>) {
+
+    for (enemy in enemies) {
+        enemy.attackAllShips(patrols)
+    }
+}
+
 fun spezialAngriffBoss(enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>) {
 
         for (enemy in enemies) {

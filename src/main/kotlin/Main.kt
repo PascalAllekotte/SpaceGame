@@ -69,7 +69,7 @@ fun main() {
 //AB hier macht der Gegner seinen move
            move3()
             spezialAngriffBoss(enemies, patrols)
-
+            attackeBossAlle(enemies, patrols)
             laserAngriffdesGegners()
             normalerAngriffdesGegners() // KEIN FEHLER
             // patrols.forEach { it.zerstört(patrols)}
@@ -86,8 +86,6 @@ fun main() {
             // gegnerAngriff1()
 
 
-
-           // attackAllShips(patrols, 500.0)
            // shipStats(patrols, round)
 
             if (alleUnterOder0(patrols)) {

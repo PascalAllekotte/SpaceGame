@@ -22,6 +22,6 @@ open class Items(
         ship.health += item.health
         ship.attack += item.attack
         ship.armor += item.armor
-        println("<-${ship.name} used [${item.name}] successfully!")
+        println("<-${ship.name} used \u001B[34m[${item.name}]\u001B[0m successfully!\n")
     }
 }

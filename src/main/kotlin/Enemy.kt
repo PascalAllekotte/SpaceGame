@@ -54,7 +54,7 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
                 } else {
                     patrols[zufallsGenerator].health -= damage
                 }
-                println(" ${name} attacks ${patrols[zufallsGenerator].name} with a laserbeam " + "\u001B[31m[$damage]\u001B[0m")
+                println("<= ${name} attacks ${patrols[zufallsGenerator].name} with a laserbeam " + "\u001B[31m[$damage]\u001B[0m")
 
             }
         }
@@ -85,6 +85,29 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
             destroyed = true
         }
 
+    }
+
+
+    fun attackAllShips(patrolShip: MutableList<PatrolShip>) {
+        var lebtNoch = false
+        val damage = attack*1.4
+        if (runden % 4 == 0){
+        if (enemies.isNotEmpty() && enemies[0].isBoss) {
+            for (ship in patrolShip) {
+                if (!enemies[0].destroyed) {
+                    lebtNoch = true
+                    if (ship.defense) {
+                        ship.health -= damage - damage * 0.82
+                    } else {
+                        ship.health -= damage
+                    }
+                }
+            }
+        }
+        }
+        if (lebtNoch) {
+            println("<= ${enemies[0].name} uses photon weapon on Galactic Patrol.. Damage: " + "\u001B[31m[${"%.1f".format(damage)}]\u001B[0m")
+        }
     }
     }
 
