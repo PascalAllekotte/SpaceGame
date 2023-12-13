@@ -4,7 +4,7 @@ import Patrol.PatrolShip
 
 fun healthPatrol(ships: List<PatrolShip>, coins: Int): String {
     val patrolHP = ships.sumOf { it.health }
-    val healthColor = "\u001B[31m${"%.1f".format(patrolHP)}\u001B[0m"
+    val healthColor = "\u001B[31m${(patrolHP)}\u001B[0m"
     val coinColor = "\u001B[38;5;208m$coins\u001B[0m"
     return "Galactic Patrol has a total HP of: $healthColor | Coins: $coinColor"
 }
@@ -236,16 +236,14 @@ fun move2(){
 fun move3(){
     if (!enemies.isEmpty()){
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
-    println("\n______Enemy shoots back______________!")
+    println("______Enemy shoots back______________")
 
-        Thread.sleep(400)
-        println("<= <=")
-        Thread.sleep(200)
-        println("<=     <=")
-        //gegnerAngriff1()
-        Thread.sleep(100)
-        println("   <= <=")
-        Thread.sleep(200)
+        Thread.sleep(300)
+        println("<==<==<==<==<==<==<==<==<==<==<==")
+        Thread.sleep(300)
+        println("<==<==<==<==<==<==<==<==<==<==<==")
+        Thread.sleep(300)
+        println("<==<==<==<==<==<==<==<==<==<==<==")
     //attackAllShips(patrols, 200.0)
     println("  <=         <=\n \n \n")
     Thread.sleep(700)}
@@ -479,9 +477,11 @@ fun levelUP (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>){
 
 fun dropItem (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>, itemList: MutableList<Items>){
     if (enemies.isEmpty() && patrols.all { it.level == 1 }){
+        val drop =  Items("PatrolHP +250", 250.0, 250.0, 0)
         val drop1 = Items("Armor    +250", 250.0, 0.0, 0)
+        itemList.add(drop)
         itemList.add(drop1)
-        println("Item dropped!")
+        println("\u001B[34m|===>Items dropped<===|\u001B[0m")
     }
 
 }

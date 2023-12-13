@@ -63,8 +63,8 @@ fun main() {
             bag(itemList, patrols) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             // Printed wenn eins zerstört wurde vom gegner
-            zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
             enemies.forEach { it.zerstört(enemies)}
+            zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
 //AB hier macht der Gegner seinen move
            move3()
             spezialAngriffBoss(enemies, patrols)

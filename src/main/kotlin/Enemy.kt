@@ -38,7 +38,7 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
             } else {
                 patrols[zufallsGenerator].health -= damage
             }
-            println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of " + "\u001B[31m[$damage]\u001B[0m")
+            println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of " + "\u001B[31m[${"%.1f".format(damage)}]\u001B[0m")
 
         }
 
@@ -66,6 +66,7 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
             println("Boss turns defensive mode.")
             println("Boss spawns a ship!")
             enemies.add(
+
                 Enemy("Undercover", 50.0, 75.0, false, false, false, 2, 0.0, false))
 
         } else {
@@ -75,16 +76,16 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
 
         // Mitteilung wenn gegnerisches Raumschiff zerstört wurde.
 
-        fun zerstört(list: MutableList<Enemy>) {
-            if (health <= 0) {
-                println("->Enemy spaceship '$name' got destroyed....")
-                destroyed = true
-            }
 
+
+
+    fun zerstört(list: MutableList<Enemy>) {
+        if (health <= 0) {
+            println("-> Enemy spaceship " + "\u001B[31m'$name'\u001B[0m" + " got destroyed....\n")
+            destroyed = true
         }
 
-
-
+    }
     }
 
 

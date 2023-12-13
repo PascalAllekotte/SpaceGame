@@ -44,11 +44,7 @@ open class PatrolShip (name: String, health: Double, attack: Double, defense: Bo
     }
 
 
-        fun zerstört(list: MutableList<PatrolShip>) {
-            if (health <= 0) {
-                println("<-Your spaceship '$name' got destroyed....")
-            }
-        }
+
 
     open fun normalAttackPatrol(enemies: MutableList<Enemy>, auswahl: Int) {
         if (auswahl in enemies.indices) {
@@ -60,11 +56,16 @@ open class PatrolShip (name: String, health: Double, attack: Double, defense: Bo
             } else {
                 target.health -= damage
             }
-            println("$name attacks ${target.name} \u001B[31m[$damage]\u001B[0m")
+            println("$name attacks ${target.name} \u001B[31m[${"%.1f".format(damage)}]\u001B[0m")
+            enemies.forEach { it.zerstört(enemies)}
         } else {
             println("Invalid target selection.")
         }
     }
-
+    fun zerstört(list: MutableList<PatrolShip>) {
+        if (health <= 0) {
+            println("-> Your spaceship " + "\u001B[33m'$name'\u001B[0m" + " got destroyed....")
+        }
+    }
 
 }
