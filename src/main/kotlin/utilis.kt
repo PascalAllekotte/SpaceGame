@@ -501,12 +501,15 @@ fun dropItem (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>, ite
         val drop3 = Items("Armor    +370", 370.0, 0.0, 0)
         itemList.add(drop2)
         itemList.add(drop3)
-
+        println("+++Enemy group destroyed!+++")
+        println("            \u001B[34m|===>Items dropped<===|\u001B[0m")
     } else if (enemies.isEmpty() && patrols.all { it.level == 3 }) {
-        val drop2 = Items("Attack +100", 0.0, 380.0, 0)
-        val drop3 = Items("HP    +370", 0.0, 370.0, 0)
-        itemList.add(drop2)
-        itemList.add(drop3)
+        val drop4 = Items("Attack +100", 0.0, 380.0, 0)
+        val drop5 = Items("HP    +370", 0.0, 370.0, 0)
+        itemList.add(drop4)
+        itemList.add(drop4)
+        println("+++Enemy group destroyed!+++")
+        println("            \u001B[34m|===>Items dropped<===|\u001B[0m")
     }
 
 }
