@@ -317,12 +317,11 @@ fun afterGameRound (){
                         val selectedPatrolShip = ship[shipNumber - 1]
                         selectedItem.useItem(selectedItem, selectedPatrolShip)
                         liste.removeAt(selectedItemIndex)
-                        println("Item [${selectedItem.name}] used successfully!")
                     } else {
-                        println("Invalid item selection.")
+                        println("Wrong input.")
                     }
                 } catch (e: NumberFormatException) {
-                    println("Invalid input.")
+                    println("Wrong input.")
                 }
                 gameRound(patrols)
             }
@@ -483,7 +482,7 @@ fun dropItem (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>, ite
         val drop1 = Items("Armor    +250", 250.0, 0.0, 0)
         itemList.add(drop)
         itemList.add(drop1)
-        println("+++First enemy group down+++")
+        println("+++Enemy group destroyed!+++")
         println("            \u001B[34m|===>Items dropped<===|\u001B[0m")
     }
 
