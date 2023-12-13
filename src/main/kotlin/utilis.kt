@@ -89,15 +89,11 @@ fun bag(itemList: MutableList<Items>, patrols: MutableList<PatrolShip>) {
     } else {
         println("Item: ")
         for ((index, item) in itemList.withIndex()) {
-            println("[$index] ${item.name}")
+            println("[${index +1}] ${item.name}")
         }
 
     }
         println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
-}
-
-fun choosePatrolShip(patrols: MutableList<PatrolShip>): PatrolShip {
-    return patrols.firstOrNull() ?: throw NoSuchElementException("No PatrolShip available.")
 }
 
 fun gameRound (ship: MutableList<PatrolShip>){
@@ -144,7 +140,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
                         when (menu2) {
                             1 -> {
 
-                                itemsMenu(itemList)
+                                itemsMenu(itemList, ship, shipNumber)
                             }
 
                             2 -> {
@@ -277,7 +273,7 @@ fun afterGameRound (){
 }
 //______________Items im Gameround Menü_____________________________________
 
-    fun itemsMenu (liste: MutableList<Items>){
+    fun itemsMenu (liste: MutableList<Items>, ship: MutableList<PatrolShip>, shipNumber: Int){
         if (liste.isEmpty() && coins <= 0){
             println("No Coins/Items in Storage")
             gameRound(patrols)
@@ -305,19 +301,20 @@ fun afterGameRound (){
         } else {
             println("Items in Storage:")
             for ((index, item) in liste.withIndex()) {
-                println("[$index] ${item.name}")
+
+                println("[${index +1}] ${item.name}")
             }
 
-            print("Choose an item or type x to go back: ")
+            print("Choose an item or type '0' go back: ")
             val itemWahl = readLine()
-            if (itemWahl == "x") {
+            if (itemWahl == "0") {
                 gameRound(patrols)
             } else {
                 try {
-                    val selectedItemIndex = itemWahl?.toInt()
+                    val selectedItemIndex = itemWahl?.toInt()?.minus(1)
                     if (selectedItemIndex != null && selectedItemIndex in 0 until liste.size) {
                         val selectedItem = liste[selectedItemIndex]
-                        val selectedPatrolShip = choosePatrolShip(patrols)
+                        val selectedPatrolShip = ship[shipNumber - 1]
                         selectedItem.useItem(selectedItem, selectedPatrolShip)
                         liste.removeAt(selectedItemIndex)
                         println("Item '${selectedItem.name}' used successfully!")
