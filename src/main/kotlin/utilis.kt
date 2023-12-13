@@ -80,20 +80,25 @@ fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
 }
 
 
-fun bag(liste: MutableList<Items>) {
+fun bag(itemList: MutableList<Items>, patrols: MutableList<PatrolShip>) {
     println("__________Items in your storage:__________")
 
-    if (liste.isEmpty()) {
+    if (itemList.isEmpty()) {
         println("|           No item in storage.          |")
 
     } else {
-        for (item in liste) {
-            println("Item: [${item}], Power: [${item}]")
+        println("Item: ")
+        for ((index, item) in itemList.withIndex()) {
+            println("[$index] ${item.name}")
         }
+
     }
-    println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
+        println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 }
 
+fun choosePatrolShip(patrols: MutableList<PatrolShip>): PatrolShip {
+    return patrols.firstOrNull() ?: throw NoSuchElementException("No PatrolShip available.")
+}
 
 fun gameRound (ship: MutableList<PatrolShip>){
 
@@ -138,6 +143,7 @@ fun menu1(ship: MutableList<PatrolShip>) {
                         var menu2 = readln().toInt() // Nur Zahlen
                         when (menu2) {
                             1 -> {
+
                                 itemsMenu(itemList)
                             }
 
@@ -297,9 +303,33 @@ fun afterGameRound (){
                 }
             }
         } else {
-            println("$liste")
-        }
+            println("Items in Storage:")
+            for ((index, item) in liste.withIndex()) {
+                println("[$index] ${item.name}")
+            }
 
+            print("Choose an item or type x to go back: ")
+            val itemWahl = readLine()
+            if (itemWahl == "x") {
+                gameRound(patrols)
+            } else {
+                try {
+                    val selectedItemIndex = itemWahl?.toInt()
+                    if (selectedItemIndex != null && selectedItemIndex in 0 until liste.size) {
+                        val selectedItem = liste[selectedItemIndex]
+                        val selectedPatrolShip = choosePatrolShip(patrols)
+                        selectedItem.useItem(selectedItem, selectedPatrolShip)
+                        liste.removeAt(selectedItemIndex)
+                        println("Item '${selectedItem.name}' used successfully!")
+                    } else {
+                        println("Invalid item selection.")
+                    }
+                } catch (e: NumberFormatException) {
+                    println("Invalid input.")
+                }
+                gameRound(patrols)
+            }
+        }
     }
 
 
@@ -450,7 +480,14 @@ fun levelUP (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>){
 
 }
 
+fun dropItem (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>, itemList: MutableList<Items>){
+    if (enemies.isEmpty() && patrols.all { it.level == 1 }){
+        val drop1 = Items("Armor    +250", 250.0, 0.0, 0)
+        itemList.add(drop1)
+        println("Item dropped!")
+    }
 
+}
 
 
 //---------------------Attacken vom Gegner-----

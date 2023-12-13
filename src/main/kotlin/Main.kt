@@ -60,7 +60,7 @@ fun main() {
             var patrolHealth = healthPatrol(patrols, coins)
             shipStats(patrols, round) // Stats der Schiffe
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
-            bag(itemList) // Items im storage anzeigen
+            bag(itemList, patrols) // Items im storage anzeigen
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             // Printed wenn eins zerstört wurde vom gegner
             zerstörtAusListeLöschenEnemy(enemies) // löscht diese dann aus der liste
@@ -76,6 +76,7 @@ fun main() {
             //patrols.forEach { it.zerstört(patrols)}
             zerstörtAusListeLöschenPatrol(patrols) // klappt
             special2(enemies) // klappt
+            dropItem(enemies, patrols, itemList)
             println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
             print("Press Enter for next Round")
             readln().toIntOrNull()
