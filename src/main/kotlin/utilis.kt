@@ -47,7 +47,7 @@ fun armorBubble(patrolHP: Double){
 fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
     println("__________Stats of your ships:__________    Round: $round    __________")
     for (ship in patrols) {
-        val nameColor = "\u001B[97m${ship.name}\u001B[0m"
+        val name = "\u001B[1m\u001B[4m${ship.name}\u001B[0m"
         val healthColor = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
         val attackColor = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
         val armorColor = "\u001B[33m${"%.1f".format(ship.armor)}\u001B[0m"
@@ -56,15 +56,15 @@ fun shipStats(patrols: MutableList<PatrolShip>, round: Int) {
         val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
 
 
-        println("Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus]")
+        println("Ship: [${name}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus]")
     }
 }
 
 //____________________________Gegner________________________________________
 fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
-    println("|__________Stats of the Enemy Ships:____________________________________________________")
+    println("___________Stats of the Enemy Ships:____________________________________________________")
     for (ship in enemies) {
-        val nameColor = "\u001B[97m${ship.name}\u001B[0m"
+        val name = "\u001B[1m\u001B[4m${ship.name}\u001B[0m"
         val healthColor = "\u001B[31m${"%.1f".format(ship.health)}\u001B[0m"
         val attackColor = "\u001B[34m${"%.1f".format(ship.attack)}\u001B[0m"
         val armorColor = "\u001B[33m${"%.1f".format(ship.armor)}\u001B[0m"
@@ -73,7 +73,7 @@ fun enemyStats(patrols: MutableList<Enemy>, round: Int) {
         val defenseModeStatus = if (!ship.defense) "\u001B[32mAttack\u001B[0m" else "\u001B[31mDefense\u001B[0m"
 
 
-        println("|Ship: [${nameColor}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus] |")
+        println("|Ship: [${name}], HP: [$healthColor], Attack: [$attackColor], Armor: [$armorColor], Level: [$levelColor], Modus: [$defenseModeStatus] |")
     }
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
 
@@ -221,11 +221,11 @@ fun move2(){
     Thread.sleep(500)
     println("\nAttacking Enemy...")
     Thread.sleep(400)
-    println("=> =>")
+    println("=> =>        =>")
         Thread.sleep(200)
-        println("=>     =>")
+        println("=>  =>   =>")
         Thread.sleep(100)
-        println("   => =>")
+        println("   => =>       =>")
         Thread.sleep(200)
         println("  =>         =>")
 
@@ -238,14 +238,16 @@ fun move3(){
     println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
     println("______Enemy shoots back______________")
 
-        Thread.sleep(300)
-        println("<==<==<==<==<==<==<==<==<==<==<==")
-        Thread.sleep(300)
-        println("<==<==<==<==<==<==<==<==<==<==<==")
-        Thread.sleep(300)
-        println("<==<==<==<==<==<==<==<==<==<==<==")
-    //attackAllShips(patrols, 200.0)
-    println("  <=         <=\n \n \n")
+        Thread.sleep(400)
+        println("     <= <======")
+        Thread.sleep(200)
+        println("<=     <=  |<<")
+        //gegnerAngriff1()
+        Thread.sleep(100)
+        println("<=     <=  |<<")
+        Thread.sleep(200)
+        println("     <= <======")
+
     Thread.sleep(700)}
     patrols.forEach { it.zerstört(patrols)}
 
@@ -303,7 +305,7 @@ fun afterGameRound (){
                 println("[${index +1}] ${item.name}")
             }
 
-            print("Choose an item or type '0' go back: ")
+            print("\nChoose an item or type '0' go back: ")
             val itemWahl = readLine()
             if (itemWahl == "0") {
                 gameRound(patrols)
@@ -315,7 +317,7 @@ fun afterGameRound (){
                         val selectedPatrolShip = ship[shipNumber - 1]
                         selectedItem.useItem(selectedItem, selectedPatrolShip)
                         liste.removeAt(selectedItemIndex)
-                        println("Item '${selectedItem.name}' used successfully!")
+                        println("Item [${selectedItem.name}] used successfully!")
                     } else {
                         println("Invalid item selection.")
                     }
@@ -481,7 +483,8 @@ fun dropItem (enemies: MutableList<Enemy>, patrols: MutableList<PatrolShip>, ite
         val drop1 = Items("Armor    +250", 250.0, 0.0, 0)
         itemList.add(drop)
         itemList.add(drop1)
-        println("\u001B[34m|===>Items dropped<===|\u001B[0m")
+        println("+++First enemy group down+++")
+        println("            \u001B[34m|===>Items dropped<===|\u001B[0m")
     }
 
 }
@@ -554,7 +557,7 @@ fun attackAllEnemies(patrolShips: MutableList<PatrolShip>, enemies: MutableList<
         val defenseMultiplier = if (enemies[auswahl].defense) 0.50 else 1.0
         val damage = totalAttackPoints * defenseMultiplier
         enemies[auswahl].health -= damage
-        println("=>${enemies[auswahl].name} is under attack! Damage: [$damage]")
+        println("=>${enemies[auswahl].name} is under attack! Damage: \u001B[31m[${"%.1f".format(damage)}]\u001B[0m")
 
     }
     if (enemies[auswahl].health <= 0){

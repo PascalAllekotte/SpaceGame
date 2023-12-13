@@ -40,7 +40,7 @@ fun main() {
 
         // Später noch Blinken lassen Spielstart Effekt einbauen
         println("                                Galactic Patrol")
-        println("______________________________________________________________________________________")
+        println("_____________________________________________________________________________________________")
 
 
         while (alive) {
@@ -61,6 +61,7 @@ fun main() {
             shipStats(patrols, round) // Stats der Schiffe
             println(patrolHealth) // Gesamte Gesundheit und Coins anzeigen
             bag(itemList, patrols) // Items im storage anzeigen
+            enemyStats(enemies, round)
             gameRound(patrols) // Schiffe mit items bestücken oder Modus auswählen
             // Printed wenn eins zerstört wurde vom gegner
             enemies.forEach { it.zerstört(enemies)}

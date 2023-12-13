@@ -38,7 +38,7 @@ class Enemy(val name: String, var health: Double, var attack: Double, var defens
             } else {
                 patrols[zufallsGenerator].health -= damage
             }
-            println(" ${name} attacks ${patrols[zufallsGenerator].name} with a damage of " + "\u001B[31m[${"%.1f".format(damage)}]\u001B[0m")
+            println("<= ${name} attacks ${patrols[zufallsGenerator].name} with a damage of " + "\u001B[31m[${"%.1f".format(damage)}]\u001B[0m")
 
         }
 

@@ -22,6 +22,6 @@ open class Items(
         ship.health += item.health
         ship.attack += item.attack
         ship.armor += item.armor
-        println("${ship.name} used ${item.name}.")
+        println("<-${ship.name} used [${item.name}]")
     }
 }
